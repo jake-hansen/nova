@@ -7,4 +7,4 @@ Directory Structure:
 java: Eclipse project directory for Tomcat. When cloning repo, choose the option
       to import existing project to Eclipse.
 
-www: Web root directory.
+www: Web root directory. This directory will serve all web based files expect for Tomcat.

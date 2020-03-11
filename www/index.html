@@ -30,7 +30,9 @@
   <div id="nav-placeholder"></div>
   <script>
     $(function(){
-      $("#nav-placeholder").load("navbar.html");
+      $("#nav-placeholder").load("navbar.html", function() {
+        jQuery("#home_link").addClass("active");
+      });
     });
   </script>
   <!-- End Navbar DIV -->

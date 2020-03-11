@@ -29,22 +29,17 @@
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
         </li>
-
         <li class="nav-item">
           <a class="nav-link" href="#">Placeholder link</a>
         </li>
-
         <li class="nav-item">
           <a class="nav-link" href="#">Placeholder link</a>
         </li>
-
         <li class="nav-item">
           <a class="nav-link" href="#">Placeholder link</a>
         </li>
@@ -58,8 +53,7 @@
   </nav>
 
   <!-- Login Modal -->
-  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal"
-    aria-hidden="true">
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -69,11 +63,24 @@
           </button>
         </div>
         <div class="modal-body">
-          <p>TODO</p>
+          <form role="form" method="POST" action="">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Enter email">
+              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="password" placeholder="Enter Password">
+            </div>
+            <div class="form-group mb-0">
+              <button type="submit" class="btn btn-primary btn-block">Login</button>
+            </div>
+          </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-success">Sign Up</button>
-          <button type="button" class="btn btn-primary">Login</button>
+          Don't have an account? <a href="/auth/register">Sign up »</a>
         </div>
       </div>
     </div>

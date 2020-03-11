@@ -21,19 +21,15 @@
   </head>
 </head>
 
-<body>
-  <!-- Title DIV -->
-  <div class="jumbotron text-center" style="margin-bottom:0">
-    <h1>Welcome to NOVA</h1>
-  </div>
-
+<body class="bg-light">
   <!-- Navbar DIV -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">NOVA</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-  
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
       <ul class="navbar-nav mr-auto">
@@ -54,12 +50,34 @@
         </li>
       </ul>
       <ul class="navbar-nav mr-auto-p3">
-        <a class="btn btn-primary" href="#" role="button">Login</a>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
+          Login
+        </button>
       </ul>
-
-      
     </div>
   </nav>
+
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModal">Login</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>TODO</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success">Sign Up</button>
+          <button type="button" class="btn btn-primary">Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->

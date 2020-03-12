@@ -35,19 +35,16 @@ public class DBConnection {
 
 	static String getURL() {
 		String url = DBPropertiesUtility.getProp("url");
-		System.out.println("[DBG] URL: " + url);
 		return url;
 	}
 
 	static String getUserName() {
 		String usr = DBPropertiesUtility.getProp("user");
-		System.out.println("[DBG] URL: " + usr);
 		return usr;
 	}
 
 	static String getPassword() {
 		String pwd = DBPropertiesUtility.getProp("password");
-		System.out.println("[DBG] URL: " + pwd);
 		return pwd;
 	}
 }

@@ -28,3 +28,24 @@ You might get some errors at this point. That's okay. You need to edit your buil
 11. Under server type, select *Tomcat v8.5 Server*
 12. Browse for the directory where Tomcat v8.5 is located
 13. Move *nova* from *Available* to *Configured*
+
+<h5>Files you need to change</h5>
+It's important that after importing the project, you change some specific files. The requirements are below:
+
+1. *java/src/main/config.properites.example* - You'll need to copy this file to the same directory and rename it to **config.properties.private**. Then, change the required lines in order to connect to the database.
+
+2. *java/WebContent/WEB-INF/lib* - You'll need to add the **mysql-connector-java-8.0.12.jar file**. Make sure to add this jar to your build path.
+
+<h4>How to use Docker</h4>
+Docker can be used to setup a local HTTP server seamlessly without any manual install of a traditional HTTP server. To begin, you'll need to download the latest version of Docker for your platform.
+
+[Docker Downlaod](https://www.docker.com/get-started)
+
+Next, you'll need to either copy the provided docker/*startnovanginx.sh.example* file to *docker/startnovanginx.sh.private*
+and edit the copied file to include the source path to your local repo where necessary. Or, you can run the following commands to start the docker container:
+
+`docker build -t "nova-dev:1.0" . && \
+docker run -it --rm -d --name "nova" -p 80:80 -v \
+"LOCAL/PATH/TO/WWW/REPO/DIRECTORY":/usr/share/nginx/html:ro nova-dev:1.0`
+
+If you've done everything correctly, you should be able to navigate to http://localhost and be greeted with the website.

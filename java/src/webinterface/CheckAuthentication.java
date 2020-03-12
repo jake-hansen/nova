@@ -30,21 +30,25 @@ public class CheckAuthentication extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Connection connection = null;
-
-		DBConnection.connect();
-		connection = DBConnection.connection;
-
+		
+		// Never respond to get requests, throw 404 error
+		response.sendError(HttpServletResponse.SC_NOT_FOUND);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//doGet(request, response);
 		
+		// Make database connection
+		Connection connection = null;
+		DBConnection.connect();
+		connection = DBConnection.connection;
+		
+		// Get username from form
 		String username = request.getParameter("username");
+		
+		// Get password from form
 		String password = request.getParameter("password");
 	}
 

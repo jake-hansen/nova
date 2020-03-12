@@ -1,4 +1,4 @@
-package webinterface;
+package main.webinterface;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

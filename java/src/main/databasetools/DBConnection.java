@@ -1,9 +1,9 @@
-package databasetools;
+package main.databasetools;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-import utilities.DBPropertiesUtility;
+import main.utilities.DBPropertiesUtility;
 
 public class DBConnection {
 	public static Connection connection = null;

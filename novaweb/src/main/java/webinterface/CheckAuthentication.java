@@ -1,4 +1,4 @@
-package main.webinterface;
+package webinterface;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import main.databasetools.DBConnection;
+import databasetools.DBConnection;
 
 /**
  * Servlet implementation class CheckAuthentication
@@ -35,7 +35,8 @@ public class CheckAuthentication extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// Never respond to get requests, throw 404 error
-		response.sendError(HttpServletResponse.SC_NOT_FOUND);
+		// Need to implement this
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -92,11 +93,7 @@ public class CheckAuthentication extends HttpServlet {
 			}
 			catch (Exception e) {
 				e.printStackTrace();
-			}
-			
-			
-		}
-		
+			}	
+		}	
 	}
-
 }

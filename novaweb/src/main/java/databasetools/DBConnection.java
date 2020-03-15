@@ -1,9 +1,9 @@
-package main.databasetools;
+package databasetools;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-import main.utilities.DBPropertiesUtility;
+import utilities.DBPropertiesUtility;
 
 public class DBConnection {
 	public static Connection connection = null;
@@ -27,7 +27,7 @@ public class DBConnection {
 			System.out.println("Database connection failed.");
 			e.printStackTrace();
 		}
-		
+
 		if (connection != null) {
 			System.out.println("Database connection succeeded.");
 		}

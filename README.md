@@ -3,31 +3,56 @@
 
 <h4>Directory Structure:</h4>
 
-java: Eclipse project directory for Tomcat. When cloning repo, choose the option
-      to import existing project to Eclipse. Ensure not to add any project settings files
-      to repo.
+**novaweb** - Main project directory</br>
+novaweb**/src** - Directory for all source code</br>
+novaweb/src/main**/java** - Directory for all Java source code</br>
+novaweb/src/main**/webapp** - Directory for all web source code
 
-www: Web root directory. This directory will serve all web based files expect for Tomcat.
+**docker** - Directory for docker files
 
-<h4>How to import to Eclipse</h4>
+<h4>How to import to your IDE</h4>
+This project uses a dependency manager tool known as Maven. Maven allows you to
+define configurations within an XML file that can automatically be shared with
+other developers, ensuring that each developer's environment is setup just like
+every other developer's environment. Maven takes care of importing all JARs for
+you automatically (such as JDBC Connector).</br></br>
 
-1. Clone repo to local machine
+Maven also allows you to use any IDE that supports importing Maven based projects.
+Eclipse and IntelliJ allow you to import Maven projects.
+
+To setup your local development environment for NOVA, you'll only need to configure
+your Tomcat server after you import the project. That's it. The instructions
+below are for Eclipse, but could be extended to IntelliJ.
+
+1. Clone this repo to your local machine.
 2. Open a new workspace in Eclipse. Ensure you create a workspace folder
 in a folder different from the repo
 3. Choose *Import projects...*
-4. Choose *Git* -> *Projects from Git (with smart import)*
-5. Choose *Existing local repository*
-6. Add and browse for your local repo, make sure the checkbox next to it is selected
-7. Only import *YOUR_REPO_NAME/java*. You'll need to deselect the folder that is *YOUR_REPO_NAME*
-8. Choose *Finish*
+4. Choose *Maven* -> *Existing Maven Projects*
+5. Browse for the cloned repo. Make sure it is selected and click *Finish*</br></br>
+And you're done. Now you just need to setup your local Tomcat server.
 
-You might get some errors at this point. That's okay. You need to edit your build path to include the Tomcat Server for local development.
 
-9. Choose *File* -> *New* -> *Other*
-10. Search for *Server*
-11. Under server type, select *Tomcat v8.5 Server*
-12. Browse for the directory where Tomcat v8.5 is located
-13. Move *nova* from *Available* to *Configured*
+6. Choose *File* -> *New* -> *Other*
+7. Search for *Server*
+8. Under server type, select *Tomcat v8.5 Server*
+9. Browse for the directory where Tomcat v8.5 is located
+10. Click *Finished*</br></br>
+And now you've configured your Tomcat server. All that is left is to build the
+project using Maven, and making sure it runs correctly on Tomcat!
+
+
+11. Right click on the project directory, choose *Maven* -> *Update Project* -> *OK*
+12. Now you can build the project. Right click on the project directory,
+choose *Run As* -> *Maven build...*
+13. In the 'Goals' field type **clean install** then click *Run*</br></br>
+You should see some lines scroll through the console at this point. This is
+the project being auto built and pulling in all necessary dependencies for you.
+
+At this point, you should be able to run the project on your local Tomcat
+server you configured earlier. In the *Run As* menu, choose **Run on Server**.
+Then choose *Finish*.
+
 
 <h5>Files you need to change</h5>
 It's important that after importing the project, you change some specific files. The requirements are below:

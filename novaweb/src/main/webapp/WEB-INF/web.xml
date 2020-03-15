@@ -10,18 +10,8 @@
   	<description></description>
   	<servlet-class>webinterface.CheckAuthentication</servlet-class>
   </servlet>
-  <servlet>
-  	<servlet-name>Test</servlet-name>
-  	<display-name>Test</display-name>
-  	<description></description>
-  	<servlet-class>webinterface.Test</servlet-class>
-  </servlet>
   <servlet-mapping>
   	<servlet-name>CheckAuthentication</servlet-name>
   	<url-pattern>/checkauth</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>Test</servlet-name>
-  	<url-pattern>/Test</url-pattern>
   </servlet-mapping>
 </web-app>

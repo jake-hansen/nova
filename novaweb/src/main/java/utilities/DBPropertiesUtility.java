@@ -8,7 +8,7 @@ public class DBPropertiesUtility {
 	static Properties prop = new Properties();
 
 	public static void loadProperty() throws Exception {
-		InputStream inputStream = DBPropertiesUtility.class.getResourceAsStream("config.properties.private");
+		InputStream inputStream = DBPropertiesUtility.class.getResourceAsStream("../../config/config.properties.private");
 
 		if (inputStream == null) {
 			throw new FileNotFoundException();

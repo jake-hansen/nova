@@ -1,16 +1,18 @@
-package webinterface;
+package authentication;
+
+import dao.UserDaoImpl;
+import datamodel.User;
 
 import java.io.IOException;
+import java.util.Arrays;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import databasetools.DBConnection;
-import authentication.CheckUserAuthentication;
 
 /**
  * Servlet implementation class CheckAuthentication
@@ -42,15 +44,33 @@ public class CheckAuthentication extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		boolean isAuthenticated = false;
+
 		// Get username and password from POST
 		String username = request.getParameter("username");
-		String password = request.getParameter("password");
+		char[] password = request.getParameter("password").toCharArray();
 
 		// Check if given username and password are valid
-		CheckUserAuthentication.check(username, password);
-		
-		// Get session
-		HttpSession session = request.getSession();
-		session.setAttribute("username", username);
+		UserDaoImpl udi = new UserDaoImpl();
+
+		User user = udi.getByEmailAndPassword(username, password);
+
+		// Remove password from memory
+		Arrays.fill(password, '0');
+
+		// User is authenticated
+		if (user != null) {
+			isAuthenticated = true;
+		}
+
+		// User is not authenticated
+		else {
+			request.getSession().setAttribute("failedAuthentication", true);
+		}
+
+		request.getSession().setAttribute("isAuthenticated", isAuthenticated);
+		request.getSession().setAttribute("UserObject", user);
+		response.sendRedirect(request.getHeader("Referer"));
+
 	}
 }

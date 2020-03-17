@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- Navbar DIV -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
     <a class="navbar-brand" href="#">NOVA</a>
@@ -27,7 +27,7 @@
         </c:if>
       </ul>
       <ul class="navbar-nav mr-auto-p3">
-        <c:if test="${sessionScope.isAuthenticated == false || sessionScope.isAuthenticated == null}">
+        <c:if test="${sessionScope.isAuthenticated == null || sessionScope.isAuthenticated == false}">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
           Login
         </button>

@@ -1,5 +1,5 @@
 <%@ page import="datamodel.User" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
     // Create dummy user
@@ -7,8 +7,7 @@
 
     // If user is not authenticated, redirect them
     if (request.getSession().getAttribute("isAuthenticated") == null || !((boolean) request.getSession().getAttribute("isAuthenticated"))) {
-        response.sendRedirect("/novaweb");
-        System.out.println("got here!!");
+        response.sendRedirect("./");
     }
 
     // Otherwise, store user object

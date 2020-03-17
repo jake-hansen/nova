@@ -1,0 +1,3 @@
+url=jdbc:mysql://FQDN.TO.SERVER/DB_Name
+user=USERNAME
+password=PASSWORD

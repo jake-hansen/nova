@@ -8,10 +8,20 @@
   	<servlet-name>CheckAuthentication</servlet-name>
   	<display-name>CheckAuthentication</display-name>
   	<description></description>
-  	<servlet-class>webinterface.CheckAuthentication</servlet-class>
+  	<servlet-class>authentication.CheckAuthentication</servlet-class>
   </servlet>
+	<servlet>
+		<servlet-name>Logout</servlet-name>
+		<display-name>Logout</display-name>
+		<description></description>
+		<servlet-class>authentication.Logout</servlet-class>
+	</servlet>
   <servlet-mapping>
   	<servlet-name>CheckAuthentication</servlet-name>
   	<url-pattern>/checkauth</url-pattern>
   </servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Logout</servlet-name>
+		<url-pattern>/logout</url-pattern>
+	</servlet-mapping>
 </web-app>

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +14,7 @@
     <!-- Enable support for mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>NOVA | Prepare</title>
+    <title>NOVA | Events</title>
 
     <!-- Main CSS file -->
     <link rel="stylesheet" href="main.css">
@@ -35,8 +36,8 @@
   <div id="nav-placeholder"></div>
   <script>
     $(function(){
-      $("#nav-placeholder").load("navbar.html", function() {
-        jQuery("#prepare_link").addClass("active");
+      $("#nav-placeholder").load("navbar.jsp", function() {
+        jQuery("#events_link").addClass("active");
       });
     });
   </script>
@@ -46,7 +47,12 @@
   <div id="loginmodal-placeholder"></div>
   <script>
     $(function() {
-      $("#loginmodal-placeholder").load("loginmodal.html");
+      $("#loginmodal-placeholder").load("loginmodal.jsp", function() {
+        <c:if test="${sessionScope.failedAuthentication == true}">
+        $('#loginModal').modal('show');
+        <c:remove var="failedAuthentication" scope="session"/>
+        </c:if>
+      });
     });
   </script>
   <!-- End Login Modal-->

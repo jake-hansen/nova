@@ -2,31 +2,21 @@ package dao;
 
 import datamodel.User;
 
-/**
- *
- */
-public interface UserDao {
-    /**
-     *
-     * @param user
-     */
-    public void create(User user);
+import utilities.Password;
 
-    /**
-     *
-     * @param user
-     */
-    public void update (User user);
+public class UserDao extends Dao<User> {
 
-    /**
-     *
-     * @param id
-     */
-    public void delete (int id);
+    public User getByEmailAndPassword(String email, char[] password) {
+        User returnUser = null;
+        User emailMatch = getByField(User.class, "email", email);
 
-    /**
-     *
-     * @param id
-     */
-    public User get(int id);
+        if (emailMatch != null) {
+            String retrievedPassword = emailMatch.getHashedPassword();
+            if (Password.validate(password, retrievedPassword)) {
+                returnUser = emailMatch;
+            }
+        }
+
+        return returnUser;
+    }
 }

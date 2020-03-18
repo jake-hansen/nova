@@ -1,13 +1,29 @@
 package datamodel;
 
-import utilities.Password;
+import javax.persistence.*;
+import java.io.Serializable;
 
-public class User {
+@Entity
+@Table(name = "users")
+public class User implements Serializable {
+
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
+
+    @Column(name = "first_name")
     private String firstName;
+
+    @Column(name = "last_name")
     private String lastName;
+
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "group_id")
     private int groupID;
+
+    @Column(name = "password")
     private String hashedPassword;
 
     public User(String firstName, String lastName, String email, int groupID, int id) {
@@ -18,12 +34,12 @@ public class User {
         this.id = id;
     }
 
-    public User(String firstName, String lastName, String email, char[] password, int groupID) {
+    public User(String firstName, String lastName, String email, String password, int groupID) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.groupID = groupID;
-        this.setPassword(password);
+        this.setHashedPassword(password);
     }
 
     public User() { }
@@ -64,17 +80,9 @@ public class User {
         this.groupID = groupID;
     }
 
-    public String getPassword() { return this.hashedPassword; }
+    public String getHashedPassword() { return this.hashedPassword; }
 
-    public void setPassword(char[] password) {
-        // Attempt to hash password
-        try {
-            this.hashedPassword = Password.hash(password);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+    public void setHashedPassword(String hashedPassword) { this.hashedPassword = hashedPassword; }
 
     @Override
     public String toString() {
@@ -82,6 +90,7 @@ public class User {
                 "First Name: " + firstName +
                 "\nLast Name: " + lastName +
                 "\nEmail: " + email +
+                "\nHashed Password: " + hashedPassword +
                 "\nGroup ID: " + groupID
                 + "\nID: " + id);
     }

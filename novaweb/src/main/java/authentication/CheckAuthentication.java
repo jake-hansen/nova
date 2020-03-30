@@ -2,17 +2,16 @@ package authentication;
 
 import dao.UserDaoImpl;
 import datamodel.User;
+import utilities.Password;
 
 import java.io.IOException;
 import java.util.Arrays;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class CheckAuthentication
@@ -50,6 +49,14 @@ public class CheckAuthentication extends HttpServlet {
 		String username = request.getParameter("username");
 		char[] password = request.getParameter("password").toCharArray();
 
+		// Attempt to hash password
+		try {
+			String passwordHash = Password.hash(password);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		// Check if given username and password are valid
 		UserDaoImpl udi = new UserDaoImpl();
 
@@ -67,6 +74,9 @@ public class CheckAuthentication extends HttpServlet {
 		else {
 			request.getSession().setAttribute("failedAuthentication", true);
 		}
+
+		// Remove password from memory
+		Arrays.fill(password, '0');
 
 		request.getSession().setAttribute("isAuthenticated", isAuthenticated);
 		request.getSession().setAttribute("UserObject", user);

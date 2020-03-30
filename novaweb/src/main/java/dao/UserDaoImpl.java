@@ -2,6 +2,7 @@ package dao;
 
 import databasetools.DBConnection;
 import datamodel.User;
+import utilities.Password;
 
 import java.sql.*;
 
@@ -154,24 +155,61 @@ public class UserDaoImpl implements UserDao {
     }
 
     /**
-     *
-     * @param email
-     * @param password
-     * @return
+     * Attempts to find a User in database by matching both username and password.
+     * @param email - Email of user to search for.
+     * @param password - Password of user to search for. This is a hashed password.
+     * @return - User object of found user if user was found. Null otherwise.
      */
     public User getByEmailAndPassword(String email, char[] password) {
-        // Temporary insecure String conversion of password
-        String passParam = new String(password);
-
         // User object to return
         User userResult = null;
+
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM users WHERE" +
-                    " email LIKE BINARY ? AND" +
-                    " password LIKE BINARY ?");
+                    " email LIKE BINARY ?");
 
             preparedStatement.setString(1, email);
-            preparedStatement.setString(2, passParam);
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            String retrievedPassword = null;
+
+            while (rs.next()) {
+                userResult = new User(
+                        rs.getString("first_name"),
+                        rs.getString("last_name"),
+                        rs.getString("email"),
+                        rs.getInt("group_id"),
+                        rs.getInt("id"));
+                retrievedPassword = rs.getString("password");
+            }
+
+            // If given password does not match retrieved password, user is not a match
+            if (!Password.validate(password, retrievedPassword)) userResult = null;
+        }
+        catch (SQLException se) {
+            System.out.println("Error executing SQL statement.");
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return userResult;
+    }
+
+    /**
+     * Retrieves user from database by email.
+     * @param email - Email of user to search for.
+     * @return - User object of record found. Null if not found.
+     */
+    public User getByEmail(String email) {
+        // User object to return
+        User userResult = null;
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM users WHERE" +
+                    " email LIKE BINARY ?");
+
+            preparedStatement.setString(1, email);
 
             ResultSet rs = preparedStatement.executeQuery();
 

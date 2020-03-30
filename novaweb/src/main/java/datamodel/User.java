@@ -1,12 +1,14 @@
 package datamodel;
 
+import utilities.Password;
+
 public class User {
     private int id;
     private String firstName;
     private String lastName;
     private String email;
     private int groupID;
-    private String password;
+    private String hashedPassword;
 
     public User(String firstName, String lastName, String email, int groupID, int id) {
         this.firstName = firstName;
@@ -16,12 +18,12 @@ public class User {
         this.id = id;
     }
 
-    public User(String firstName, String lastName, String email, String password, int groupID) {
+    public User(String firstName, String lastName, String email, char[] password, int groupID) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.groupID = groupID;
-        this.password = password;
+        this.setPassword(password);
     }
 
     public User() { }
@@ -62,9 +64,17 @@ public class User {
         this.groupID = groupID;
     }
 
-    public String getPassword() { return password; }
+    public String getPassword() { return this.hashedPassword; }
 
-    public void setPassword(String password) { this.password = password; }
+    public void setPassword(char[] password) {
+        // Attempt to hash password
+        try {
+            this.hashedPassword = Password.hash(password);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public String toString() {

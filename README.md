@@ -40,12 +40,11 @@ And you're done. Now you just need to setup your local Tomcat server.
 10. Click *Finished*
 11. Right click on the project directory, choose *Maven* -> *Update Project* -> *OK*</br></br>
 
-At this point, you should be able to run the project on your local Tomcat
-server you configured earlier. In the *Run As* menu, choose **Run on Server**.
-Then choose *Finish*.
-
 <h4>Files you need to change</h4>
 It's important that after importing the project, you change some specific files. The requirements are below:
 
-1. *novaweb/src/main/resources/config/config.properites.example* - You'll need to copy this file to the same directory and rename it to **config.properties.private**. Then, change the required lines in order to connect to the database.
+1. *novaweb/src/main/resources/config/hibernate.cfg.xml.example* - You'll need to copy this file to the same directory and rename it to **hibernate.cfg.xml.private**. Then, change the required lines in order to connect to the database.
 
+At this point, you should be able to run the project on your local Tomcat
+server you configured earlier. In the *Run As* menu, choose **Run on Server**.
+Then choose *Finish*.

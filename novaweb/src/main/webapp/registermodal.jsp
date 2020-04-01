@@ -1,4 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="requester" value="registermodal.jsp" scope="request"/>
+<c:if test="${requestScope.forwarded_to_getallgroups == null}">
+    <c:set var="forwarded_to_getallgroups" value="${true}" scope="request"/>
+    <jsp:forward page="/getallgroups" />
+</c:if>
 <script>
     $(document).ready(function() {
         $("#signin").click(function () {
@@ -27,8 +32,8 @@
                         <input type="text" class="form-control" id="lastname" name="lastname">
                     </div>
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="username">
+                        <label for="registeremail">Email</label>
+                        <input type="email" class="form-control" id="registeremail" aria-describedby="emailHelp" name="username">
                         <c:if test="${sessionScope.username_available == false}">
                             <p class="text-danger">Email not available.</p>
                             <c:remove var="username_available" scope="session"/>
@@ -36,24 +41,23 @@
                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
                     <div class="form-group">
-                        <label for="groupid">Group</label>
-                        <select class="form-control" id="groupid" name="groupid">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
+                        <label for="groupname">Group</label>
+                        <select class="form-control" id="groupname" name="groupname">
+                            <c:forEach var="group" items="${requestScope.group_list}">
+                                <option><c:out value="${group.groupName}" /></option>
+                            </c:forEach>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" name = "password">
+                        <label for="registerpassword">Password</label>
+                        <input type="password" class="form-control" id="registerpassword" name = "password">
                     </div>
                     <div class="form-group">
-                        <label for="passwordConfirmation">Confirm Password</label>
-                        <input type="password" class="form-control" id="passwordConfirmation">
+                        <label for="passwordconfirmation">Confirm Password</label>
+                        <input type="password" class="form-control" id="passwordconfirmation">
                     </div>
                     <div class="form-group mb-0">
-                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                        <button id="registersubmit" type="submit" class="btn btn-primary btn-block">Register</button>
                     </div>
                 </form>
             </div>

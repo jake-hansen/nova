@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * This Servlet is called when a user logsout.
+ * This Servlet is called when a user logs out.
  */
 @WebServlet(name = "Logout", urlPatterns = "/logout")
 public class Logout extends HttpServlet {

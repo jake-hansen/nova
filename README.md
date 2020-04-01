@@ -8,8 +8,6 @@ novaweb**/src** - Directory for all source code</br>
 novaweb/src/main**/java** - Directory for all Java source code</br>
 novaweb/src/main**/webapp** - Directory for all web source code
 
-**docker** - Directory for docker files
-
 <h4>How to import to your IDE</h4>
 This project uses a dependency manager tool known as Maven. Maven allows you to
 define configurations within an XML file that can automatically be shared with

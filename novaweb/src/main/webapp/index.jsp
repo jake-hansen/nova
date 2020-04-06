@@ -70,6 +70,49 @@
 </script>
 <!-- End Sign Up Modal -->
 
+<!-- Student View (Temporary Home Page Content) -->
+<div class="card text-white bg-dark mb-3" style="max-width: 25rem; align-self: center">
+    <div class="card-header"><h5>Law Enforcement/EMS Updates</h5></div>
+    <div class="card-body">
+        <p class="card-text">Updates from Law Enforcement and Emergency Services will be posted here...</p>
+    </div>
+</div>
+<div class="card text-white bg-dark mb-3" style="max-width: 25rem; align-self: center">
+    <div class="card-header"><h5>I Need Help</h5></div>
+    <div class="card-body">
+        <p>I am injured and I need immediate assistance.</p>
+        <form>
+            <div class="form-group">
+                <label for="roomNumber">Room Number</label>
+                <input type="text" class="form-control" id="roomNumber" placeholder="If you are in a room, enter the room number.">
+            </div>
+            <div class="form-group">
+                <label for="relativeLocation">Relative Location</label>
+                <input type="text" class="form-control" id="relativeLocation" placeholder="If you can, please describe where you are.">
+            </div>
+            <button type="submit" class="btn btn-primary">Send SOS</button>
+        </form>
+    </div>
+</div>
+<div class="card text-white bg-dark mb-3" style="max-width: 25rem; align-self: center">
+    <div class="card-header"><h5>I Am Lost</h5></div>
+    <div class="card-body">
+        <p>I am not injured but I am not with other students/faculty.</p>
+        <form>
+            <button type="submit" class="btn btn-primary">Come And Get Me</button>
+        </form>
+    </div>
+</div>
+<div class="card text-white bg-dark mb-3" style="max-width: 25rem; align-self: center">
+    <div class="card-header"><h5>I Am Okay</h5></div>
+    <div class="card-body">
+        <p>I am not injured and I am with students/faculty at a designated safe location.</p>
+        <form>
+            <button type="submit" class="btn btn-primary">Account For Me</button>
+        </form>
+    </div>
+</div>
+
 <!-- Optional JavaScript -->
 <!-- Popper.js, then Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"

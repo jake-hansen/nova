@@ -11,15 +11,6 @@
         <li class="nav-item" id="home_link">
           <a class="nav-link" href="./">Home</a>
         </li>
-        <li class="nav-item" id="events_link">
-          <a class="nav-link" href="events.jsp">Events</a>
-        </li>
-        <li class="nav-item" id="prepare_link">
-          <a class="nav-link" href="prepare.jsp">Prepare</a>
-        </li>
-        <li class="nav-item" id="status_link">
-          <a class="nav-link" href="status.jsp">Status</a>
-        </li>
         <c:if test="${sessionScope.isAuthenticated == true}">
           <li class="nav-item" id="account_link">
             <a class="nav-link" href="account.jsp">Account</a>

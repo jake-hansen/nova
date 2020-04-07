@@ -71,8 +71,8 @@
 <div class="container">
     <div class="row">
         <div class="col-sm">
-            <div class="card text-white bg-dark mb-3">
-                <div class="card-header"><h5>Law Enforcement/EMS Updates</h5></div>
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-light"><h5>Law Enforcement/EMS Updates</h5></div>
                 <div class="card-body">
                     <p class="card-text">Updates from Law Enforcement and Emergency Services will be posted here...</p>
                 </div>
@@ -81,8 +81,8 @@
     </div>
     <div class="row">
         <div class="col-sm">
-            <div class="card text-white bg-dark mb-3">
-                <div class="card-header"><h5>I Need Help</h5></div>
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-light"><h5>I Need Help</h5></div>
                 <div class="card-body">
                     <p>I am injured and I need immediate assistance.</p>
                     <form>
@@ -102,8 +102,8 @@
     </div>
     <div class="row">
         <div class="col-sm">
-            <div class="card text-white bg-dark mb-3">
-                <div class="card-header"><h5>I Am Lost</h5></div>
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-light"><h5>I Am Lost</h5></div>
                 <div class="card-body">
                     <p>I am not injured but I am not with other students/faculty.</p>
                     <form>
@@ -115,8 +115,8 @@
     </div>
     <div class="row">
         <div class="col-sm">
-            <div class="card text-white bg-dark mb-3">
-                <div class="card-header"><h5>I Am Okay</h5></div>
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-light"><h5>I Am Okay</h5></div>
                 <div class="card-body">
                     <p>I am not injured and I am with students/faculty at a designated safe location.</p>
                     <form>

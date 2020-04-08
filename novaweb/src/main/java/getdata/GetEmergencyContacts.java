@@ -1,6 +1,8 @@
 package getdata;
 
 import authentication.UserAuth;
+import dao.EmergencyContactDao;
+import datamodel.EmergencyContact;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,13 +10,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "GetEmergencyContacts", urlPatterns = "/getemergencycontacts")
 public class GetEmergencyContacts extends HttpServlet {
 
     /**
      * Processes POST request. Calls doGet() since POST should not be called for this class.
-     * @param request Request to use.
+     *
+     * @param request  Request to use.
      * @param response Response to use.
      * @throws ServletException
      * @throws IOException
@@ -25,8 +29,9 @@ public class GetEmergencyContacts extends HttpServlet {
 
     /**
      * Processes GET request.
-     * @param request
-     * @param response
+     *
+     * @param request  Request to use.
+     * @param response Response to use.
      * @throws ServletException
      * @throws IOException
      */
@@ -37,8 +42,14 @@ public class GetEmergencyContacts extends HttpServlet {
          */
         if (!UserAuth.isAuthenticated(request)) {
             response.sendRedirect(request.getHeader("Referer"));
-        }
-        else {
+        } else {
+            // Get userID from request
+            int userID = (int) request.getSession().getAttribute("user_id");
+
+            EmergencyContactDao ecd = new EmergencyContactDao();
+            List<EmergencyContact> emergencyContactList = ecd.getByField
+                    (EmergencyContact.class, "user_id", Integer.toString(userID));
+
 
         }
     }

@@ -27,6 +27,7 @@ public abstract class Dao<T> {
 
     /**
      * Creates a new object of type T in the storage mechanism.
+     *
      * @param t - Object to store.
      * @return True if object is successfully created, false otherwise.
      */
@@ -56,10 +57,11 @@ public abstract class Dao<T> {
     /**
      * Updates the given object of type T in the storage mechanism. Determines object to update by
      * getting ID from t. The ID is used to lookup the primary key in the storage mechanism.
+     *
      * @param t - Object to update.
      * @return True if object is successfully updated, false otherwise.
      */
-    public boolean update (Class<T> c, T t) {
+    public boolean update(Class<T> c, T t) {
         // Open session in session factory
         Session session = factory.openSession();
 
@@ -85,11 +87,11 @@ public abstract class Dao<T> {
     /**
      * Deletes the object specified by id in the storage mechanism. Determines object to delete by
      * getting ID from t. The ID is used to lookup the primary key in the storage mechanism.
+     *
      * @param t - Object to delete.
      * @return True if object is successfully deleted, false otherwise.
      */
-    public boolean delete (Class<T> c, T t)
-    {
+    public boolean delete(Class<T> c, T t) {
         // Open session in session factory
         Session session = factory.openSession();
 
@@ -114,6 +116,7 @@ public abstract class Dao<T> {
 
     /**
      * Retrieves the object specified by id in the storage mechanism.
+     *
      * @param id - ID of the object to find.
      * @return Found object of type T, null otherwise.
      */
@@ -144,6 +147,7 @@ public abstract class Dao<T> {
 
     /**
      * Gets all objects T from the storage mechanism.
+     *
      * @param c - Class of T
      * @return List of retrieved objects. Null otherwise.
      */
@@ -156,30 +160,29 @@ public abstract class Dao<T> {
             CriteriaQuery<T> query = criteriaBuilder.createQuery(c);
             query.from(c);
             results = session.createQuery(query).getResultList();
-        }
-        catch (HibernateException he) {
+        } catch (HibernateException he) {
             if (tx != null) {
                 tx.rollback();
                 he.printStackTrace();
             }
-        }
-        catch (NoResultException e) {
-        }
-        finally {
+        } catch (NoResultException e) {
+        } finally {
             session.close();
         }
         return results;
     }
 
+
     /**
+     * Retrieves all records from database that match the searchValue on fieldNmae.
      *
-     * @param c
-     * @param fieldName
-     * @param searchValue
-     * @return
+     * @param c           Class of T
+     * @param fieldName   Field in database to search.
+     * @param searchValue Value to search for.
+     * @return List of found records.
      */
-    public T getByField(Class<T> c, String fieldName, String searchValue) {
-        T returnT;
+    public List<T> getByField(Class<T> c, String fieldName, String searchValue) {
+        List<T> returnT;
         try {
             Session session = factory.openSession();
             CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
@@ -187,7 +190,7 @@ public abstract class Dao<T> {
             Root<T> root = query.from(c);
             query.select(root).where(criteriaBuilder.equal(root.get(fieldName), searchValue));
             Query<T> q = session.createQuery(query);
-            returnT = q.getSingleResult();
+            returnT = q.getResultList();
         } catch (Exception e) {
             returnT = null;
         }

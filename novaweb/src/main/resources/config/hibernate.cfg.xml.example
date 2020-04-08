@@ -28,6 +28,7 @@
         <mapping class="datamodel.User" />
         <mapping class="datamodel.Group" />
         <mapping class="datamodel.Session" />
+        <mapping class="datamodel.EmergencyContact" />
 
     </session-factory>
 </hibernate-configuration>

@@ -8,7 +8,7 @@ public class UserDao extends Dao<User> {
 
     public User getByEmailAndPassword(String email, char[] password) {
         User returnUser = null;
-        User emailMatch = getByField(User.class, "email", email);
+        User emailMatch = getByField(User.class, "email", email).get(0);
 
         if (emailMatch != null) {
             String retrievedPassword = emailMatch.getHashedPassword();

@@ -3,6 +3,7 @@ package getdata;
 import authentication.UserAuth;
 import dao.EmergencyContactDao;
 import datamodel.EmergencyContact;
+import utilities.ServletUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,7 +29,8 @@ public class GetEmergencyContacts extends HttpServlet {
     }
 
     /**
-     * Processes GET request.
+     * Processes GET request. Sets "emergency_contact_list" request attribute to the emergency contacts
+     * of the current user.
      *
      * @param request  Request to use.
      * @param response Response to use.
@@ -36,10 +38,9 @@ public class GetEmergencyContacts extends HttpServlet {
      * @throws IOException
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        /**
-         * Check if a user has authenticated in the request. If true, proceed with getting user data. If false,
-         * redirect to caller.
-         */
+
+         // Check if a user has authenticated in the request. If true, proceed with getting user data. If false,
+         // redirect to caller.
         if (!UserAuth.isAuthenticated(request)) {
             response.sendRedirect(request.getHeader("Referer"));
         } else {
@@ -48,9 +49,12 @@ public class GetEmergencyContacts extends HttpServlet {
 
             EmergencyContactDao ecd = new EmergencyContactDao();
             List<EmergencyContact> emergencyContactList = ecd.getByField
-                    (EmergencyContact.class, "user_id", Integer.toString(userID));
+                    (EmergencyContact.class, "userId", Integer.toString(userID));
 
+            request.setAttribute("emergency_contact_list", emergencyContactList);
 
+            // Forward request back to caller
+            ServletUtil.forwardToRequester(request, response);
         }
     }
 }

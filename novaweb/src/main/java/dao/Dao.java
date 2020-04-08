@@ -174,7 +174,7 @@ public abstract class Dao<T> {
 
 
     /**
-     * Retrieves all records from database that match the searchValue on fieldNmae.
+     * Retrieves all records from database that match the searchValue on fieldName.
      *
      * @param c           Class of T
      * @param fieldName   Field in database to search.

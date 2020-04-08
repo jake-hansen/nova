@@ -98,28 +98,14 @@
                 <div class="card-body">
                     <h5 class="card-title">Account Info</h5>
                     <div class="border-top my-3"></div>
-                    <form>
-                        <div class="form-group">
-                            <label for="firstname">First Name</label>
-                            <input type="text" class="form-control bg-light" id="firstname"
-                                   placeholder="<c:out value="${requestScope.user_object.firstName}"/>">
-                        </div>
-                        <div class="form-group">
-                            <label for="lastname">Last Name</label>
-                            <input type="text" class="form-control bg-light" id="lastname"
-                                   placeholder="<c:out value="${requestScope.user_object.lastName}"/>">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control bg-light" id="email"
-                                   placeholder="<c:out value="${requestScope.user_object.email}"/>">
-                        </div>
-                        <div class="form-group">
-                            <label for="group_name">Group</label>
-                            <input type="text" class="form-control bg-light" id="group_name"
-                                   placeholder="<c:out value="${requestScope.group_object.groupName}"/>">
-                        </div>
-                    </form>
+                    <h6>First Name</h6>
+                    <p><c:out value="${requestScope.user_object.firstName}"/></p>
+                    <h6>Last Name</h6>
+                    <p><c:out value="${requestScope.user_object.lastName}"/></p>
+                    <h6>Email</h6>
+                    <p><c:out value="${requestScope.user_object.email}"/></p>
+                    <h6>Group</h6>
+                    <p><c:out value="${requestScope.group_object.groupName}"/></p>
                 </div>
             </div>
         </div>

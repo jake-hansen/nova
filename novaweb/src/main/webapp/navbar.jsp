@@ -1,17 +1,30 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="requester" value="navbar.jsp" scope="request"/>
+<c:set var="requester" value="/navbar.jsp" scope="request"/>
 
 <c:if test="${sessionScope.isAuthenticated == true && requestScope.forwarded_to_getuserdata == null}">
-    <jsp:forward page="/getuserdata"/>
+    <jsp:forward page="/getuserdata" />
 </c:if>
 
-<script>
-    $(document).ready(function () {
-        $("#signup").click(function () {
-            $('#registerModal').modal('show');
+<c:if test="${requestScope.user_object.groupID == 4}">
+    <!-- Sign Up Modal -->
+    <script>
+        $(function () {
+            $("#signupmodal-placeholder").load("registermodal.jsp", function () {
+                <c:if test="${sessionScope.failed_register == true}">
+                $('#registerModal').modal('show');
+                <c:remove var="failed_register" scope="session"/>
+                </c:if>
+            });
         });
-    });
-</script>
+        $(document).ready(function () {
+            $("#signup").click(function () {
+                $('#registerModal').modal('show');
+            });
+        });
+    </script>
+    <div id="signupmodal-placeholder"></div>
+    <!-- End Sign Up Modal -->
+</c:if>
 <!-- Navbar DIV -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
     <a class="navbar-brand" href="#">NOVA</a>

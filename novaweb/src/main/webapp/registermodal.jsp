@@ -1,5 +1,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="requester" value="registermodal.jsp" scope="request"/>
+<c:set var="requester" value="/registermodal.jsp" scope="request"/>
+
+<c:if test="${sessionScope.isAuthenticated == true && requestScope.forwarded_to_getuserdata == null}">
+    <jsp:forward page="/getuserdata" />
+</c:if>
+
+<c:if test="${requestScope.user_object.groupID != 4}">
+    <c:redirect url="/"/>
+</c:if>
+
 <c:if test="${requestScope.forwarded_to_getallgroups == null}">
     <c:set var="forwarded_to_getallgroups" value="${true}" scope="request"/>
     <jsp:forward page="/getallgroups" />

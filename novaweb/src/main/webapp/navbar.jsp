@@ -28,7 +28,7 @@
                 <li class="nav-item" id="account_link">
                     <a class="nav-link" href="account.jsp">Account</a>
                 </li>
-                <!- Administrator views: admins are groupID number 4 -->
+                <!-- Administrator views: admins are groupID number 4 -->
                 <c:if test="${requestScope.user_object.groupID == 4}">
                     <li class="nav-item" id="">
                         <a href=# class="nav-link" id="signup">Create Account</a>

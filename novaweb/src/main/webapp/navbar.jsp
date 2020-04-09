@@ -1,4 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="requester" value="navbar.jsp" scope="request"/>
+
+<c:if test="${sessionScope.isAuthenticated == true && requestScope.forwarded_to_getuserdata == null}">
+    <jsp:forward page="/getuserdata"/>
+</c:if>
+
 <script>
     $(document).ready(function () {
         $("#signup").click(function () {
@@ -16,30 +22,31 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item" id="home_link">
-          <a class="nav-link" href="./">Home</a>
-        </li>
+                <a class="nav-link" href="./">Home</a>
+            </li>
             <c:if test="${sessionScope.isAuthenticated == true}">
                 <li class="nav-item" id="account_link">
                     <a class="nav-link" href="account.jsp">Account</a>
                 </li>
-                <%--            <c:if test="${requestScope.group_object.groupName.compareTo('Administrators') == 0}">--%>
-                <li class="nav-item" id="">
-                    <a href=# class="nav-link" id="signup">Create Account</a>
-                </li>
-                <%--            </c:if>--%>
+                <!- Administrator views: admins are groupID number 4 -->
+                <c:if test="${requestScope.user_object.groupID == 4}">
+                    <li class="nav-item" id="">
+                        <a href=# class="nav-link" id="signup">Create Account</a>
+                    </li>
+                </c:if>
             </c:if>
-      </ul>
-      <ul class="navbar-nav mr-auto-p3">
-        <c:if test="${sessionScope.isAuthenticated == null || sessionScope.isAuthenticated == false}">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
-          Login
-        </button>
-        </c:if>
-        <c:if test="${sessionScope.isAuthenticated == true}">
-          <form action="/novaweb/logout" method="POST" class="btn" style="margin: 0; padding: 0;">
-            <button type="submit" class="btn btn-secondary" style="width: 100%;">Logout</button>
-          </form>
-        </c:if>
-      </ul>
+        </ul>
+        <ul class="navbar-nav mr-auto-p3">
+            <c:if test="${sessionScope.isAuthenticated == null || sessionScope.isAuthenticated == false}">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
+                    Login
+                </button>
+            </c:if>
+            <c:if test="${sessionScope.isAuthenticated == true}">
+                <form action="/novaweb/logout" method="POST" class="btn" style="margin: 0; padding: 0;">
+                    <button type="submit" class="btn btn-secondary" style="width: 100%;">Logout</button>
+                </form>
+            </c:if>
+        </ul>
     </div>
-  </nav>
+</nav>

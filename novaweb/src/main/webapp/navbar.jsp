@@ -6,10 +6,10 @@
 </c:if>
 
 <c:if test="${requestScope.user_object.groupID == 4}">
-    <!-- Sign Up Modal -->
+    <!-- Create Modal -->
     <script>
         $(function () {
-            $("#signupmodal-placeholder").load("registermodal.jsp", function () {
+            $("#createmodal-placeholder").load("registermodal.jsp", function () {
                 <c:if test="${sessionScope.failed_register == true}">
                 $('#registerModal').modal('show');
                 <c:remove var="failed_register" scope="session"/>
@@ -17,13 +17,13 @@
             });
         });
         $(document).ready(function () {
-            $("#signup").click(function () {
+            $("#create").click(function () {
                 $('#registerModal').modal('show');
             });
         });
     </script>
-    <div id="signupmodal-placeholder"></div>
-    <!-- End Sign Up Modal -->
+    <div id="createmodal-placeholder"></div>
+    <!-- End Create Modal -->
 </c:if>
 <!-- Navbar DIV -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
@@ -44,7 +44,7 @@
                 <!-- Administrator views: admins are groupID number 4 -->
                 <c:if test="${requestScope.user_object.groupID == 4}">
                     <li class="nav-item" id="">
-                        <a href=# class="nav-link" id="signup">Create Account</a>
+                        <a href=# class="nav-link" id="create">Create Account</a>
                     </li>
                 </c:if>
             </c:if>

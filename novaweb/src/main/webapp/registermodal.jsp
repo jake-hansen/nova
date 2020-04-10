@@ -21,11 +21,12 @@
         });
     });
 </script>
-<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModal" aria-hidden="true">
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModal"
+     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Sign up</h5>
+                <h5 class="modal-title">Create Account</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -53,13 +54,13 @@
                         <label for="groupname">Group</label>
                         <select class="form-control" id="groupname" name="groupname">
                             <c:forEach var="group" items="${requestScope.group_list}">
-                                <option><c:out value="${group.groupName}" /></option>
+                                <option><c:out value="${group.groupName}"/></option>
                             </c:forEach>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="registerpassword">Password</label>
-                        <input type="password" class="form-control" id="registerpassword" name = "password">
+                        <input type="password" class="form-control" id="registerpassword" name="password">
                     </div>
                     <div class="form-group">
                         <label for="passwordconfirmation">Confirm Password</label>
@@ -70,9 +71,7 @@
                     </div>
                 </form>
             </div>
-            <div class="modal-footer" id="modal-footer">
-                Already have an account? <a href="#" id="signin">Sign in</a>
-            </div>
+            <div class="modal-footer" id="modal-footer"></div>
         </div>
     </div>
 </div>

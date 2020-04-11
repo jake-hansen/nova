@@ -43,8 +43,8 @@
                 </li>
                 <!-- Administrator views: admins are groupID number 4 -->
                 <c:if test="${requestScope.user_object.groupID == 4}">
-                    <li class="nav-item" id="">
-                        <a href=# class="nav-link" id="create">Create Account</a>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" id="create">Create Account</a>
                     </li>
                 </c:if>
             </c:if>

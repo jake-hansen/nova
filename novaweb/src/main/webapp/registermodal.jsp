@@ -13,14 +13,6 @@
     <c:set var="forwarded_to_getallgroups" value="${true}" scope="request"/>
     <jsp:forward page="/getallgroups" />
 </c:if>
-<script>
-    $(document).ready(function() {
-        $("#signin").click(function () {
-            $('#registerModal').modal('hide');
-            $('#loginModal').modal('show');
-        });
-    });
-</script>
 <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModal"
      aria-hidden="true">
     <div class="modal-dialog" role="document">

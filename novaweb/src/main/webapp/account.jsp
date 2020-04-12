@@ -74,11 +74,11 @@
 </script>
 <!-- End Login Modal-->
 
-<!-- Sign Up Modal -->
-<div id="signupmodal-placeholder"></div>
+<!-- Create Modal -->
+<div id="createmodal-placeholder"></div>
 <script>
     $(function () {
-        $("#signupmodal-placeholder").load("registermodal.jsp", function () {
+        $("#createmodal-placeholder").load("registermodal.jsp", function () {
             <c:if test="${sessionScope.failed_register == true}">
             $('#registerModal').modal('show');
             <c:remove var="failed_register" scope="session"/>
@@ -86,7 +86,7 @@
         });
     });
 </script>
-<!-- End Sign Up Modal -->
+<!-- End Create Modal -->
 
 <div class="container">
     <div class="row justify-content-center">

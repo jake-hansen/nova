@@ -67,8 +67,9 @@ public class Login extends HttpServlet {
                 UserAuth.failAuthentication(request, response, ud.getByField(User.class, "email", username),
                         request.getSession().getId());
             }
+
+            // Redirect to requester
+            ServletUtil.redirectToRequester(request, response);
         }
-        // Redirect to requester
-        ServletUtil.redirectToRequester(request, response);
     }
 }

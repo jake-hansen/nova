@@ -2,6 +2,27 @@
 <c:if test="${sessionScope.checkedsession == null}">
     <jsp:forward page="/checksession"/>
 </c:if>
+
+<c:if test="${sessionScope.isAuthenticated == true && requestScope.forwarded_to_getuserdata == null && sessionScope.group_id == 1}">
+    <c:set var="forwarded_to_getuserdata" value="${true}" scope="request"/>
+    <jsp:forward page="/faculty.jsp" />
+</c:if>
+
+<c:if test="${sessionScope.isAuthenticated == true && requestScope.forwarded_to_getuserdata == null && sessionScope.group_id == 2}">
+    <c:set var="forwarded_to_getuserdata" value="${true}" scope="request"/>
+    <jsp:forward page="/student.jsp" />
+</c:if>
+
+<c:if test="${sessionScope.isAuthenticated == true && requestScope.forwarded_to_getuserdata == null && sessionScope.group_id == 3}">
+    <c:set var="forwarded_to_getuserdata" value="${true}" scope="request"/>
+    <jsp:forward page="/firstresponders.jsp" />
+</c:if>
+
+<c:if test="${sessionScope.isAuthenticated == true && requestScope.forwarded_to_getuserdata == null && sessionScope.group_id == 4}">
+    <c:set var="forwarded_to_getuserdata" value="${true}" scope="request"/>
+    <jsp:forward page="/administrators.jsp" />
+</c:if>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +48,7 @@
     <link rel="manifest" href="favicon/site.webmanifest">
 </head>
 
-<body class="bg-light">
+<body style="background-color: #d0d6e2">
 <!-- Navbar DIV -->
 <div id="nav-placeholder"></div>
 <script>
@@ -67,67 +88,17 @@
 </script>
 <!-- End Sign Up Modal -->
 
-<!-- Student View (Temporary Home Page Content) -->
-<div class="container">
-    <div class="row">
-        <div class="col-sm">
-            <div class="card mb-3">
-                <div class="card-header bg-dark text-light"><h5>Law Enforcement/EMS Updates</h5></div>
-                <div class="card-body">
-                    <p class="card-text">Updates from Law Enforcement and Emergency Services will be posted here...</p>
-                </div>
+<!-- Home Page -->
+<header class="homepage" style="height: 100vh; min-height: 500px; background-image: url('./images/homepage.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; overflow: hidden; color: white">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12 text-center">
+                <h3>Network of Verified Accountability</h3>
+                <p class="lead">Real-time accountability management for use in the aftermath of a school-related crisis.</p>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm">
-            <div class="card mb-3">
-                <div class="card-header bg-dark text-light"><h5>I Need Help</h5></div>
-                <div class="card-body">
-                    <p>I am injured and I need immediate assistance.</p>
-                    <form>
-                        <div class="form-group">
-                            <label for="roomNumber">Room Number</label>
-                            <input type="text" class="form-control" id="roomNumber" placeholder="If you are in a room, enter the room number.">
-                        </div>
-                        <div class="form-group">
-                            <label for="relativeLocation">Relative Location</label>
-                            <input type="text" class="form-control" id="relativeLocation" placeholder="If you can, please describe where you are.">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send SOS</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm">
-            <div class="card mb-3">
-                <div class="card-header bg-dark text-light"><h5>I Am Lost</h5></div>
-                <div class="card-body">
-                    <p>I am not injured but I am not with other students/faculty.</p>
-                    <form>
-                        <button type="submit" class="btn btn-primary">Come And Get Me</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm">
-            <div class="card mb-3">
-                <div class="card-header bg-dark text-light"><h5>I Am Okay</h5></div>
-                <div class="card-body">
-                    <p>I am not injured and I am with students/faculty at a designated safe location.</p>
-                    <form>
-                        <button type="submit" class="btn btn-primary">Account For Me</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
+</header>
 
 <!-- Optional JavaScript -->
 <!-- Popper.js, then Bootstrap JS -->

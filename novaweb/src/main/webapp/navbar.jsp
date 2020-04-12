@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- Navbar DIV -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3" style="font-size: larger">
     <a class="navbar-brand" href="#">NOVA</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,7 +13,12 @@
         </li>
         <c:if test="${sessionScope.isAuthenticated == true}">
           <li class="nav-item" id="account_link">
-            <a class="nav-link" href="account.jsp">Account</a>
+            <a class="nav-link" href="account.jsp">Profile</a>
+          </li>
+        </c:if>
+        <c:if test="${sessionScope.isAuthenticated == true && sessionScope.group_id != 2}">
+          <li class="nav-item" id="accountability_link">
+            <a class="nav-link" href="accountability.jsp">Accountability</a>
           </li>
         </c:if>
       </ul>
@@ -25,7 +30,7 @@
         </c:if>
         <c:if test="${sessionScope.isAuthenticated == true}">
           <form action="/novaweb/logout" method="POST" class="btn" style="margin: 0; padding: 0;">
-            <button type="submit" class="btn btn-secondary" style="width: 100%;">Logout</button>
+            <button type="submit" class="btn btn-secondary" style="width: 100%">Logout</button>
           </form>
         </c:if>
       </ul>

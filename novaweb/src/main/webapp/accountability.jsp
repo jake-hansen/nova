@@ -1,27 +1,7 @@
-<%@ page import="datamodel.User" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="requester" value="account.jsp" scope="request"/>
-
 <c:if test="${sessionScope.checkedsession == null}">
     <jsp:forward page="/checksession"/>
 </c:if>
-
-<c:if test="${sessionScope.isAuthenticated == false || sessionScope.isAuthenticated == null}">
-    <c:redirect url="/"/>
-</c:if>
-
-<c:if test="${sessionScope.isAuthenticated == true && requestScope.forwarded_to_getuserdata == null}">
-    <jsp:forward page="/getuserdata" />
-</c:if>
-
-<c:if test="${sessionScope.isAuthenticated == true && requestScope.forwarded_to_getgroupdata == null}">
-    <c:set var="forwarded_to_getgroupdata" value="${true}" scope="request"/>
-    <c:set var="group_id" value="${requestScope.user_object.groupID}" scope="request"/>
-    <jsp:forward page="/getgroupdata" />
-</c:if>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +14,7 @@
     <!-- Enable support for mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>NOVA | Account</title>
+    <title>NOVA</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -48,13 +28,12 @@
 </head>
 
 <body style="background-color: #d0d6e2">
-
 <!-- Navbar DIV -->
 <div id="nav-placeholder"></div>
 <script>
     $(function () {
         $("#nav-placeholder").load("navbar.jsp", function () {
-            jQuery("#account_link").addClass("active");
+            jQuery("#accountability_link").addClass("active");
         });
     });
 </script>
@@ -88,45 +67,68 @@
 </script>
 <!-- End Sign Up Modal -->
 
+<!-- Accountability View -->
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col">
-            <div class="card">
-                <div class="card-header bg-dark">
-                    <h3 class="text-light">Hi, <c:out value="${requestScope.user_object.firstName}"/></h3>
-                </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-light"><h5>Search for Student/Faculty Member</h5></div>
                 <div class="card-body">
-                    <h5 class="card-title">Account Info</h5>
-                    <div class="border-top my-3"></div>
-                    <h6>First Name</h6>
-                    <p><c:out value="${requestScope.user_object.firstName}"/></p>
-                    <h6>Last Name</h6>
-                    <p><c:out value="${requestScope.user_object.lastName}"/></p>
-                    <h6>Email</h6>
-                    <p><c:out value="${requestScope.user_object.email}"/></p>
-                    <h6>Group</h6>
-                    <p><c:out value="${requestScope.group_object.groupName}"/></p>
+                    <div class="row">
+                        <div class="col-sm">
+                            <form>
+                                <div class="form-group">
+                                    <label for="searchName">Enter the name of a person you wish to search for.</label>
+                                    <input type="text" class="form-control" id="searchName" placeholder="Student/Faculty Member Name">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </form>
+                        </div>
+                        <div class="col-sm">
+                            <form>
+                                <div class="form-group">
+                                    <label for="accountabilityResult">Search Result</label>
+                                    <input type="text" class="form-control" id="accountabilityResult" disabled>
+                                    <input type="text" class="form-control" id="emergencyContactResult" disabled>
+                                    <input type="text" class="form-control" id="emergencyContactPhoneNumber" disabled>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-    <div class="row justify-content-center">
-        <div class="col">
-            <div class="card my-3">
-                <div class="card-header bg-dark">
-                    <h3 class="text-light">Emergency Contacts</h3>
-                </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-light"><h5>Account for Student/Faculty Member</h5></div>
                 <div class="card-body">
-                    <h5 class="card-title">All</h5>
-                    <div class="border-top my-3"></div>
+                    <div class="row">
+                        <div class="col-sm">
+                            <form>
+                                <div class="form-group">
+                                    <label for="accountForName">Enter the name of a person you wish to account for.</label>
+                                    <input type="text" class="form-control" id="accountForName" placeholder="Student/Faculty Member Name">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Account For Student/Faculty Member</button>
+                            </form>
+                        </div>
+                        <div class="col-sm">
+                            <form>
+                                <div class="form-group">
+                                    <label for="submissionResult">Submission Result</label>
+                                    <input type="text" class="form-control" id="submissionResult" disabled>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
+
 
 <!-- Optional JavaScript -->
 <!-- Popper.js, then Bootstrap JS -->

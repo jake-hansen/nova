@@ -21,6 +21,11 @@
             <a class="nav-link" href="accountability.jsp">Accountability</a>
           </li>
         </c:if>
+        <c:if test="${sessionScope.isAuthenticated == true && sessionScope.group_id == 4}">
+          <li class="nav-item" id="accountmanagement_link">
+            <a class="nav-link" href="accountmanagement.jsp">Account Management</a>
+          </li>
+        </c:if>
       </ul>
       <ul class="navbar-nav mr-auto-p3">
         <c:if test="${sessionScope.isAuthenticated == null || sessionScope.isAuthenticated == false}">

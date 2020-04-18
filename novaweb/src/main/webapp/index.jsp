@@ -48,7 +48,7 @@
     <link rel="manifest" href="favicon/site.webmanifest">
 </head>
 
-<body style="background-color: #d0d6e2">
+<body style="background-color: black">
 <!-- Navbar DIV -->
 <div id="nav-placeholder"></div>
 <script>
@@ -89,7 +89,7 @@
 <!-- End Sign Up Modal -->
 
 <!-- Home Page -->
-<header class="homepage" style="height: 100vh; min-height: 500px; background-image: url('./images/homepage.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; overflow: hidden; color: white">
+<header class="homepage" style="height: 100vh; min-height: 500px; background-image: url('./images/homepage.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; overflow: hidden; color: white; display: block; text-shadow: 2px 2px black">
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-12 text-center">

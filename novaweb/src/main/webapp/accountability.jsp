@@ -88,9 +88,9 @@
                             <form>
                                 <div class="form-group">
                                     <label for="accountabilityResult">Search Result</label>
-                                    <input type="text" class="form-control" id="accountabilityResult" disabled>
-                                    <input type="text" class="form-control" id="emergencyContactResult" disabled>
-                                    <input type="text" class="form-control" id="emergencyContactPhoneNumber" disabled>
+                                    <input type="text" class="form-control" id="accountabilityResult" placeholder="Unaccounted For" disabled>
+                                    <input type="text" class="form-control" id="emergencyContactResult" placeholder="Emergency_Contact_Name" disabled>
+                                    <input type="text" class="form-control" id="emergencyContactPhoneNumber" placeholder="Emergency_Contact_Phone#" disabled>
                                 </div>
                             </form>
                         </div>
@@ -112,14 +112,6 @@
                                     <input type="text" class="form-control" id="accountForName" placeholder="Student/Faculty Member Name">
                                 </div>
                                 <button type="submit" class="btn btn-primary">Account For Student/Faculty Member</button>
-                            </form>
-                        </div>
-                        <div class="col-sm">
-                            <form>
-                                <div class="form-group">
-                                    <label for="submissionResult">Submission Result</label>
-                                    <input type="text" class="form-control" id="submissionResult" disabled>
-                                </div>
                             </form>
                         </div>
                     </div>

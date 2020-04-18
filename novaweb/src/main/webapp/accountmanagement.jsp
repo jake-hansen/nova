@@ -33,7 +33,7 @@
 <script>
     $(function () {
         $("#nav-placeholder").load("navbar.jsp", function () {
-            jQuery("#home_link").addClass("active");
+            jQuery("#accountmanagement_link").addClass("active");
         });
     });
 </script>
@@ -67,69 +67,29 @@
 </script>
 <!-- End Sign Up Modal -->
 
-<!-- Faculty View -->
+<!-- Accountability View -->
 <div class="container">
     <div class="row">
         <div class="col-sm">
             <div class="card mb-3">
-                <div class="card-header bg-dark text-light"><h5>Law Enforcement/EMS Updates</h5></div>
+                <div class="card-header bg-dark text-light"><h5>Delete An Account</h5></div>
                 <div class="card-body">
-                    <p class="card-text">Most recent updates will be shown here...</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm">
-            <div class="card mb-3">
-                <div class="card-header bg-dark text-light"><h5>Send Informational Update</h5></div>
-                <div class="card-body">
-                    <div class="form-group">
-                        <label for="informationalUpdate">Type your update...</label>
-                        <input type="text" class="form-control" id="informationalUpdate" placeholder="Current status of crisis.">
+                    <div class="row">
+                        <div class="col-sm">
+                            <form>
+                                <div class="form-group">
+                                    <label for="accountForName">Enter the name of a person who's account you wish to delete.</label>
+                                    <input type="text" class="form-control" id="accountForName" placeholder="Student/Faculty Member Name">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Delete Account</button>
+                            </form>
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Send Update</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm">
-            <div class="card mb-3">
-                <div class="card-header bg-dark text-light"><h5>Emergency Dashboard</h5></div>
-                <div class="card-body">
-                    <div style="overflow-x:auto; max-height: 400px">
-                        <table id="emergencyDashboard" class="table table-bordered">
-                            <thead>
-                            <tr>
-                                <th>Emergency Type</th>
-                                <th>Student/Faculty Name</th>
-                                <th>Relative Location</th>
-                            </tr>
-                            </thead>
-                        </table>
-                    </div>
-                    <script>
-                        function myFunction() {
-                            var table = document.getElementById("emergencyDashboard");
-                            var row = table.insertRow(1);
-                            var cell0 = row.insertCell(0);
-                            var cell1 = row.insertCell(1)
-                            var cell2 = row.insertCell(2);
-                            cell0.innerHTML = "SOS";
-                            cell1.innerHTML = "Student_1";
-                            cell2.innerHTML = "Across from library";
-                        }
-                    </script>
-                    <button type="button" class="btn btn-primary" onclick="myFunction()">Refresh</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
-
 
 
 <!-- Optional JavaScript -->

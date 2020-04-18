@@ -1,7 +1,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <c:if test="${sessionScope.checkedsession == null}">
     <jsp:forward page="/checksession"/>
 </c:if>
+
+<c:set var="requester" value="accountmanagement.jsp" scope="request"/>
+<c:if test="${requestScope.forwarded_to_getallgroups == null}">
+    <c:set var="forwarded_to_getallgroups" value="${true}" scope="request"/>
+    <jsp:forward page="/getallgroups" />
+</c:if>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,22 +61,59 @@
 </script>
 <!-- End Login Modal-->
 
-<!-- Sign Up Modal -->
-<div id="signupmodal-placeholder"></div>
-<script>
-    $(function () {
-        $("#signupmodal-placeholder").load("registermodal.jsp", function () {
-            <c:if test="${sessionScope.failed_register == true}">
-            $('#registerModal').modal('show');
-            <c:remove var="failed_register" scope="session"/>
-            </c:if>
-        });
-    });
-</script>
-<!-- End Sign Up Modal -->
-
 <!-- Accountability View -->
 <div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-light"><h5>Create An Account</h5></div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm">
+                            <form role="form" method="POST" action="./register">
+                                <div class="form-group">
+                                    <label for="firstname">First Name</label>
+                                    <input type="text" class="form-control" id="firstname" name="firstname">
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastname">Last Name</label>
+                                    <input type="text" class="form-control" id="lastname" name="lastname">
+                                </div>
+                                <div class="form-group">
+                                    <label for="registeremail">Email</label>
+                                    <input type="email" class="form-control" id="registeremail" aria-describedby="emailHelp" name="username">
+                                    <c:if test="${sessionScope.username_available == false}">
+                                        <p class="text-danger">Email not available.</p>
+                                        <c:remove var="username_available" scope="session"/>
+                                    </c:if>
+                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="groupname">Group</label>
+                                    <select class="form-control" id="groupname" name="groupname">
+                                        <c:forEach var="group" items="${requestScope.group_list}">
+                                            <option><c:out value="${group.groupName}" /></option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="registerpassword">Password</label>
+                                    <input type="password" class="form-control" id="registerpassword" name = "password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="passwordconfirmation">Confirm Password</label>
+                                    <input type="password" class="form-control" id="passwordconfirmation">
+                                </div>
+                                <div class="form-group mb-0">
+                                    <button id="registersubmit" type="submit" class="btn btn-primary btn-block">Create Account</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-sm">
             <div class="card mb-3">

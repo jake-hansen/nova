@@ -74,20 +74,6 @@
 </script>
 <!-- End Login Modal-->
 
-<!-- Sign Up Modal -->
-<div id="signupmodal-placeholder"></div>
-<script>
-    $(function () {
-        $("#signupmodal-placeholder").load("registermodal.jsp", function () {
-            <c:if test="${sessionScope.failed_register == true}">
-            $('#registerModal').modal('show');
-            <c:remove var="failed_register" scope="session"/>
-            </c:if>
-        });
-    });
-</script>
-<!-- End Sign Up Modal -->
-
 <!-- Home Page -->
 <header class="homepage" style="height: 100vh; min-height: 500px; background-image: url('./images/homepage.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; overflow: hidden; color: white; display: block; text-shadow: 2px 2px black">
     <div class="container h-100">

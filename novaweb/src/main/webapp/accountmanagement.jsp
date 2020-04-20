@@ -86,7 +86,6 @@
                                         <p class="text-danger">Email not available.</p>
                                         <c:remove var="username_available" scope="session"/>
                                     </c:if>
-                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                                 </div>
                                 <div class="form-group">
                                     <label for="groupname">Group</label>
@@ -98,15 +97,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="registerpassword">Password</label>
-                                    <input type="password" class="form-control" id="registerpassword" name = "password">
+                                    <input type="password" class="form-control" id="registerpassword" name="password">
                                 </div>
                                 <div class="form-group">
                                     <label for="passwordconfirmation">Confirm Password</label>
                                     <input type="password" class="form-control" id="passwordconfirmation">
                                 </div>
-                                <div class="form-group mb-0">
-                                    <button id="registersubmit" type="submit" class="btn btn-primary btn-block">Create Account</button>
-                                </div>
+                                <button type="submit" class="btn btn-primary">Create Account</button>
                             </form>
                         </div>
                     </div>

@@ -5,23 +5,21 @@
     <jsp:forward page="/checksession"/>
 </c:if>
 
-<c:if test="${sessionScope.isAuthenticated == true && requestScope.forwarded_to_getuserdata == null && sessionScope.group_id == 1}">
+<c:if test="${sessionScope.isAuthenticated == true && requestScope.forwarded_to_getuserdata == null}">
     <c:set var="forwarded_to_getuserdata" value="${true}" scope="request"/>
-    <jsp:forward page="/faculty.jsp"/>
+    <jsp:forward page="/getuserdata"/>
 </c:if>
 
-<c:if test="${sessionScope.isAuthenticated == true && requestScope.forwarded_to_getuserdata == null && sessionScope.group_id == 2}">
-    <c:set var="forwarded_to_getuserdata" value="${true}" scope="request"/>
+<c:if test="${requestScope.user_object.groupID == 1}">
+    <jsp:forward page="/faculty.jsp" />
+</c:if>
+<c:if test="${requestScope.user_object.groupID == 2}">
     <jsp:forward page="/student.jsp" />
 </c:if>
-
-<c:if test="${sessionScope.isAuthenticated == true && requestScope.forwarded_to_getuserdata == null && sessionScope.group_id == 3}">
-    <c:set var="forwarded_to_getuserdata" value="${true}" scope="request"/>
+<c:if test="${requestScope.user_object.groupID == 3}">
     <jsp:forward page="/firstresponders.jsp" />
 </c:if>
-
-<c:if test="${sessionScope.isAuthenticated == true && requestScope.forwarded_to_getuserdata == null && sessionScope.group_id == 4}">
-    <c:set var="forwarded_to_getuserdata" value="${true}" scope="request"/>
+<c:if test="${requestScope.user_object.groupID == 4}">
     <jsp:forward page="/administrators.jsp" />
 </c:if>
 

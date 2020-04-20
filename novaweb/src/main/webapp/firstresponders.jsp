@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="requester" value="/firstresponders.jsp" scope="request"/>
+
 <c:if test="${sessionScope.checkedsession == null}">
     <jsp:forward page="/checksession"/>
 </c:if>

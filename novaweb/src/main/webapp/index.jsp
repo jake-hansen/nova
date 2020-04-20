@@ -1,11 +1,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="requester" value="/index.jsp" scope="request"/>
+
 <c:if test="${sessionScope.checkedsession == null}">
     <jsp:forward page="/checksession"/>
 </c:if>
 
 <c:if test="${sessionScope.isAuthenticated == true && requestScope.forwarded_to_getuserdata == null && sessionScope.group_id == 1}">
     <c:set var="forwarded_to_getuserdata" value="${true}" scope="request"/>
-    <jsp:forward page="/faculty.jsp" />
+    <jsp:forward page="/faculty.jsp"/>
 </c:if>
 
 <c:if test="${sessionScope.isAuthenticated == true && requestScope.forwarded_to_getuserdata == null && sessionScope.group_id == 2}">

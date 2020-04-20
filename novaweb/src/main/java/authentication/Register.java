@@ -77,7 +77,7 @@ public class Register extends HttpServlet {
                 ud.create(newUser);
             }
 
-            // Redirect to self
+            // Forward to previous page
             ServletUtil.redirectToRequester(request, response);
         }
         // Remove password from memory

@@ -6,7 +6,6 @@
 </c:if>
 
 <c:if test="${requestScope.forwarded_to_getallgroups == null}">
-    <c:set var="forwarded_to_getallgroups" value="${true}" scope="request"/>
     <jsp:forward page="/getallgroups" />
 </c:if>
 

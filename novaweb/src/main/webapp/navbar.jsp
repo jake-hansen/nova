@@ -1,4 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="requester" value="/navbar.jsp" scope="request"/>
+
+<c:if test="${sessionScope.isAuthenticated == true && requestScope.forwarded_to_getuserdata == null}">
+  <c:set var="forwarded_to_getuserdata" value="${true}" scope="request"/>
+  <jsp:forward page="/getuserdata"/>
+</c:if>
+
 <!-- Navbar DIV -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3" style="font-size: larger">
   <a class="navbar-brand">NOVA</a>
@@ -16,12 +23,12 @@
           <a class="nav-link" href="account.jsp">Profile</a>
         </li>
       </c:if>
-      <c:if test="${sessionScope.isAuthenticated == true && sessionScope.group_id != 2}">
+      <c:if test="${sessionScope.isAuthenticated == true && requestScope.user_object.groupID != 2}">
         <li class="nav-item" id="accountability_link">
           <a class="nav-link" href="accountability.jsp">Accountability</a>
         </li>
       </c:if>
-      <c:if test="${sessionScope.isAuthenticated == true && sessionScope.group_id == 4}">
+      <c:if test="${sessionScope.isAuthenticated == true && requestScope.user_object.groupID == 4}">
           <li class="nav-item" id="accountmanagement_link">
             <a class="nav-link" href="accountmanagement.jsp">Account Management</a>
           </li>

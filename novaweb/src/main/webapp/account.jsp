@@ -1,4 +1,3 @@
-<%@ page import="datamodel.User" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="requester" value="account.jsp" scope="request"/>
 
@@ -6,21 +5,18 @@
     <jsp:forward page="/checksession"/>
 </c:if>
 
-<c:if test="${sessionScope.isAuthenticated == false || sessionScope.isAuthenticated == null}">
+<c:if test="${sessionScope.isAuthenticated == false}">
     <c:redirect url="/"/>
 </c:if>
 
-<c:if test="${sessionScope.isAuthenticated == true && requestScope.forwarded_to_getuserdata == null}">
+<c:if test="${requestScope.forwarded_to_getuserdata == null}">
     <jsp:forward page="/getuserdata" />
 </c:if>
 
-<c:if test="${sessionScope.isAuthenticated == true && requestScope.forwarded_to_getgroupdata == null}">
-    <c:set var="forwarded_to_getgroupdata" value="${true}" scope="request"/>
+<c:if test="${requestScope.forwarded_to_getgroupdata == null}">
     <c:set var="group_id" value="${requestScope.user_object.groupID}" scope="request"/>
     <jsp:forward page="/getgroupdata" />
 </c:if>
-
-
 
 <!DOCTYPE html>
 <html lang="en">

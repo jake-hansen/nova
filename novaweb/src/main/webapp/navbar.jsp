@@ -2,7 +2,6 @@
 <c:set var="requester" value="/navbar.jsp" scope="request"/>
 
 <c:if test="${sessionScope.isAuthenticated == true && requestScope.forwarded_to_getuserdata == null}">
-  <c:set var="forwarded_to_getuserdata" value="${true}" scope="request"/>
   <jsp:forward page="/getuserdata"/>
 </c:if>
 

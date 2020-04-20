@@ -46,6 +46,9 @@ public class GetGroupData extends HttpServlet {
                 request.setAttribute("group_object", gdi.get(Group.class, groupID));
             }
 
+            // Before forward, set forwarded parameter
+            request.setAttribute("forwarded_to_getgroupdata", true);
+
             // Forward request back to caller
             RequestDispatcher rd = request.getRequestDispatcher((String) request.getAttribute("requester"));
             rd.forward(request, response);

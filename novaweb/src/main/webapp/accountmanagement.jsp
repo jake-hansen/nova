@@ -5,7 +5,6 @@
     <jsp:forward page="/checksession"/>
 </c:if>
 
-<c:set var="requester" value="accountmanagement.jsp" scope="request"/>
 <c:if test="${requestScope.forwarded_to_getallgroups == null}">
     <c:set var="forwarded_to_getallgroups" value="${true}" scope="request"/>
     <jsp:forward page="/getallgroups" />

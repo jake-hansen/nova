@@ -24,7 +24,6 @@ public class UserAuth {
     public static void authenticate(HttpServletRequest request, HttpServletResponse response, User user, String sessionID) {
         // Set session attributes
         request.getSession().setAttribute("user_id", user.getId());
-        request.getSession().setAttribute("group_id", user.getGroupID());
         request.getSession().setAttribute("isAuthenticated", true);
         storeUpdateSession(request, response, user, sessionID, true);
     }

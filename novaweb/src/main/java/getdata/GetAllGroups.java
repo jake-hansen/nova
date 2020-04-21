@@ -29,6 +29,9 @@ public class GetAllGroups extends HttpServlet {
 
         request.setAttribute("group_list", groupList);
 
+        // Before forward, set forwarded parameter
+        request.setAttribute("forwarded_to_getallgroups", true);
+
         // Forward to requester
         ServletUtil.forwardToRequester(request, response);
     }

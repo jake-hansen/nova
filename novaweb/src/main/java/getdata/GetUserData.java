@@ -55,7 +55,6 @@ public class GetUserData extends HttpServlet {
             // Set request attribute "user_object" to the found User object
             request.setAttribute("user_object", user);
 
-
             // Before forward, set forwarded parameter
             request.setAttribute("forwarded_to_getuserdata", true);
 

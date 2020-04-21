@@ -1,23 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="requester" value="account.jsp" scope="request"/>
+<c:set var="requester" value="/firstresponders.jsp" scope="request"/>
 
 <c:if test="${sessionScope.checkedsession == null}">
     <jsp:forward page="/checksession"/>
 </c:if>
-
-<c:if test="${sessionScope.isAuthenticated == false}">
-    <c:redirect url="/"/>
-</c:if>
-
-<c:if test="${requestScope.forwarded_to_getuserdata == null}">
-    <jsp:forward page="/getuserdata" />
-</c:if>
-
-<c:if test="${requestScope.forwarded_to_getgroupdata == null}">
-    <c:set var="group_id" value="${requestScope.user_object.groupID}" scope="request"/>
-    <jsp:forward page="/getgroupdata" />
-</c:if>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +16,7 @@
     <!-- Enable support for mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>NOVA | Account</title>
+    <title>NOVA</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -44,13 +30,12 @@
 </head>
 
 <body style="background-color: #d0d6e2">
-
 <!-- Navbar DIV -->
 <div id="nav-placeholder"></div>
 <script>
     $(function () {
         $("#nav-placeholder").load("navbar.jsp", function () {
-            jQuery("#account_link").addClass("active");
+            jQuery("#home_link").addClass("active");
         });
     });
 </script>
@@ -70,45 +55,70 @@
 </script>
 <!-- End Login Modal-->
 
+<!-- Faculty View -->
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col">
-            <div class="card">
-                <div class="card-header bg-dark">
-                    <h3 class="text-light">Hi, <c:out value="${requestScope.user_object.firstName}"/></h3>
-                </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-light"><h5>Law Enforcement/EMS Updates</h5></div>
                 <div class="card-body">
-                    <h5 class="card-title">Account Info</h5>
-                    <div class="border-top my-3"></div>
-                    <h6>First Name</h6>
-                    <p><c:out value="${requestScope.user_object.firstName}"/></p>
-                    <h6>Last Name</h6>
-                    <p><c:out value="${requestScope.user_object.lastName}"/></p>
-                    <h6>Email</h6>
-                    <p><c:out value="${requestScope.user_object.email}"/></p>
-                    <h6>Group</h6>
-                    <p><c:out value="${requestScope.group_object.groupName}"/></p>
+                    <p class="card-text">Most recent updates will be shown here...</p>
                 </div>
             </div>
         </div>
     </div>
-
-
-    <div class="row justify-content-center">
-        <div class="col">
-            <div class="card my-3">
-                <div class="card-header bg-dark">
-                    <h3 class="text-light">Emergency Contacts</h3>
-                </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-light"><h5>Send Informational Update</h5></div>
                 <div class="card-body">
-                    <h5 class="card-title">All</h5>
-                    <div class="border-top my-3"></div>
+                    <div class="form-group">
+                        <label for="informationalUpdate">Type your update...</label>
+                        <input type="text" class="form-control" id="informationalUpdate" placeholder="Current status of crisis.">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Update</button>
                 </div>
             </div>
         </div>
     </div>
-
+    <div class="row">
+        <div class="col-sm">
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-light"><h5>Emergency Dashboard</h5></div>
+                <div class="card-body">
+                    <div style="overflow-x:auto; max-height: 400px">
+                        <table id="emergencyDashboard" class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>Emergency Type</th>
+                                <th>Student/Faculty Name</th>
+                                <th>Relative Location</th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <script>
+                        function myFunction() {
+                            var table = document.getElementById("emergencyDashboard");
+                            var row = table.insertRow(1);
+                            var cell0 = row.insertCell(0);
+                            var cell1 = row.insertCell(1)
+                            var cell2 = row.insertCell(2);
+                            cell0.innerHTML = "SOS";
+                            cell1.innerHTML = "Student_1";
+                            cell2.innerHTML = "Across from library";
+                        }
+                    </script>
+                    <button type="button" class="btn btn-primary" onclick="myFunction()">Refresh</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+
+
+
 
 <!-- Optional JavaScript -->
 <!-- Popper.js, then Bootstrap JS -->

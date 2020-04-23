@@ -5,7 +5,7 @@
     <jsp:forward page="/checksession"/>
 </c:if>
 
-<c:if test="${sessionScope.isAuthenticated == false}">
+<c:if test="${sessionScope.isAuthenticated == false || sessionScope.isAuthenticated == null}">
     <c:redirect url="/"/>
 </c:if>
 

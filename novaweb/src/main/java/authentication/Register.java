@@ -65,7 +65,7 @@ public class Register extends HttpServlet {
         else {
             // Find groupID by group name
             GroupDao gd = new GroupDao();
-            int groupID = gd.getByField(Group.class, "groupName", groupName).getId();
+            int groupID = gd.getByField(Group.class, "groupName", groupName).get(0).getId();
 
             // Username is available, so attempt to create account
             String passwordHash = null;

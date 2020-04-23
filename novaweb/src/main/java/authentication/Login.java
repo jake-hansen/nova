@@ -64,8 +64,8 @@ public class Login extends HttpServlet {
             }
             // If user match was not found, don't authenticate
             else {
-                UserAuth.failAuthentication(request, response, ud.getByField(User.class, "email", username),
-                        request.getSession().getId());
+                User userFail = ud.getByField(User.class, "email", username).get(0);
+                UserAuth.failAuthentication(request, response, userFail, request.getSession().getId());
             }
         }
         // Redirect to requester

@@ -56,7 +56,7 @@
 <!-- End Login Modal-->
 
 <!-- Send Update Status Toast -->
-<div class="toast" data-autohide="false" style="position: absolute; bottom: 0; left: 50%; transform: translate(-50%, 0px);">
+<div class="toast" data-autohide="false" style="position: absolute; bottom: 0; left: 50%; transform: translate(-50%, 0px); z-index: 9999;">
     <div class="toast-header">
         <strong class="mr-auto">Informational Update</strong>
         <small>now</small>

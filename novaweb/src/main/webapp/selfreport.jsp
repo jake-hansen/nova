@@ -73,7 +73,7 @@
                 <div class="card-header bg-dark text-light"><h5>I Need Help</h5></div>
                 <div class="card-body">
                     <p>I am injured and I need immediate assistance.</p>
-                    <form role="form" method="POST" action="./setaccountability">
+                    <form role="form" method="POST" action="./selfreport">
                         <div class="form-group">
                             <label for="location">Location</label>
                             <input type="text" class="form-control" id="location" placeholder="Room number, relative location, surroundings, etc.">
@@ -90,7 +90,7 @@
                 <div class="card-header bg-dark text-light"><h5>I Am Lost</h5></div>
                 <div class="card-body">
                     <p>I am not injured but I am not with other students/faculty.</p>
-                    <form role="form" method="POST" action="./setaccountability">
+                    <form role="form" method="POST" action="./selfreporty">
                         <button type="submit" name="cagm" class="btn btn-primary">Come And Get Me</button>
                     </form>
                 </div>
@@ -103,7 +103,7 @@
                 <div class="card-header bg-dark text-light"><h5>I Am Okay</h5></div>
                 <div class="card-body">
                     <p>I am not injured and I am with students/faculty at a designated safe location.</p>
-                    <form role="form" method="POST" action="./setaccountability">
+                    <form role="form" method="POST" action="./selfreport">
                         <button type="submit" name="okay" class="btn btn-primary">Account For Me</button>
                     </form>
                 </div>

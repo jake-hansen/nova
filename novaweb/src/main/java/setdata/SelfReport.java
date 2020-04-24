@@ -14,8 +14,8 @@ import java.io.IOException;
 /**
  * This Servlet is called when a user registers using the register form.
  */
-@WebServlet(name = "SetAccountability", urlPatterns = "/setaccountability")
-public class SetAccountability extends HttpServlet {
+@WebServlet(name = "SelfReport", urlPatterns = "/selfreport")
+public class SelfReport extends HttpServlet {
 
     /**
      * Processes GET request. When called, send 404 as GET should never be called for /login.

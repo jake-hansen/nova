@@ -1,12 +1,7 @@
 package setdata;
 
-import dao.GroupDao;
-import dao.UserDao;
 import dao.UserStatusDao;
-import datamodel.Group;
-import datamodel.User;
 import datamodel.UserStatus;
-import utilities.Password;
 import utilities.ServletUtil;
 
 import javax.servlet.ServletException;
@@ -15,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Arrays;
 
 /**
  * This Servlet is called when a user registers using the register form.

@@ -2,8 +2,10 @@ package setdata;
 
 import dao.GroupDao;
 import dao.UserDao;
+import dao.UserStatusDao;
 import datamodel.Group;
 import datamodel.User;
+import datamodel.UserStatus;
 import utilities.Password;
 import utilities.ServletUtil;
 
@@ -52,18 +54,21 @@ public class SetAccountability extends HttpServlet {
         // Get userID from session
         int userID = (int) request.getSession().getAttribute("user_id");
 
+        UserStatusDao usd = new UserStatusDao();
+        UserStatus userStatus = new UserStatus();
+        userStatus.setUserId(userID);
         if (sos != null) {
-
+            userStatus.setStatusCode(1);
+            userStatus.setLocation(location);
         }
         else if (cagm != null) {
-
+            userStatus.setStatusCode(2);
         }
         else if (okay != null) {
-
+            userStatus.setStatusCode(3);
         }
-        else if (location != null) {
 
-        }
+        usd.create(userStatus);
 
         // Forward to previous page
         ServletUtil.redirectToRequester(request, response);

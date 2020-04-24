@@ -56,13 +56,7 @@ public class SetEmergencyContact extends HttpServlet {
         String secondaryphone = request.getParameter("secondaryphone");
         String relationship = request.getParameter("relationship");
         String email = request.getParameter("emergencycontactemail");
-
-        Enumeration enumeration = request.getParameterNames();
-        while (enumeration.hasMoreElements()) {
-            String parameterName = (String) enumeration.nextElement();
-            System.out.println("Parameter = " + parameterName);
-        }
-
+        int userId = (int) request.getSession().getAttribute("user_id");
 
         // Create new Emergency Contact
         EmergencyContactDao ecd = new EmergencyContactDao();
@@ -74,11 +68,7 @@ public class SetEmergencyContact extends HttpServlet {
         newEmergencyContact.setSecondaryPhone(secondaryphone);
         newEmergencyContact.setRelationship(relationship);
         newEmergencyContact.setEmail(email);
-
-        System.out.println(firstname);
-//        System.out.println(primaryphone);
-//        System.out.println(email);
-
+        newEmergencyContact.setUserId(userId);
 
         ecd.create(newEmergencyContact);
 

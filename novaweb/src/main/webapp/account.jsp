@@ -125,27 +125,27 @@
                     <form role="form" method="POST" action="./setemergencycontact">
                         <div class="form-group">
                             <label for="firstname">First Name</label>
-                            <input type="text" class="form-control" id="firstname">
+                            <input type="text" class="form-control" id="firstname" name="firstname">
                         </div>
                         <div class="form-group">
                             <label for="lastname">Last Name</label>
-                            <input type="text" class="form-control" id="lastname">
+                            <input type="text" class="form-control" id="lastname" name="lastname">
                         </div>
                         <div class="form-group">
                             <label for="primaryphone">Primary Phone</label>
-                            <input type="text" class="form-control" id="primaryphone"/>
+                            <input type="text" class="form-control" id="primaryphone" name="primaryphone">
                         </div>
                         <div class="form-group">
                             <label for="secondaryphone">Secondary Phone</label>
-                            <input type="text" class="form-control" id="secondaryphone"/>
+                            <input type="text" class="form-control" id="secondaryphone" name="secondaryphone">
                         </div>
                         <div class="form-group">
                             <label for="emergencycontactemail">Email</label>
-                            <input type="text" class="form-control" id="emergencycontactemail"/>
+                            <input type="text" class="form-control" id="emergencycontactemail" name="emergencycontactemail">
                         </div>
                         <div class="form-group">
                             <label for="relationship">Relationship</label>
-                            <input type="text" class="form-control" id="relationship">
+                            <input type="text" class="form-control" id="relationship" name="relationship">
                         </div>
                         <button type="submit" class="btn btn-primary">Add Contact</button>
                     </form>

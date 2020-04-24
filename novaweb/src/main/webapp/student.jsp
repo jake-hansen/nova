@@ -75,12 +75,8 @@
                     <p>I am injured and I need immediate assistance.</p>
                     <form role="form" method="POST" action="./setaccountability">
                         <div class="form-group">
-                            <label for="location">Room Number</label>
-                            <input type="text" class="form-control" id="location" placeholder="If you are in a room, enter the room number.">
-                        </div>
-                        <div class="form-group">
-                            <label for="relativeLocation">Relative Location</label>
-                            <input type="text" class="form-control" id="relativeLocation" placeholder="If you can, please describe where you are.">
+                            <label for="location">Location</label>
+                            <input type="text" class="form-control" id="location" placeholder="Room number, relative location, surroundings, etc.">
                         </div>
                         <button type="submit" name="sos" class="btn btn-primary">Send SOS</button>
                     </form>

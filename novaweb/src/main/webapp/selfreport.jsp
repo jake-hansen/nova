@@ -4,6 +4,11 @@
 <c:if test="${sessionScope.checkedsession == null}">
     <jsp:forward page="/checksession"/>
 </c:if>
+
+<c:if test="${sessionScope.isAuthenticated == false || sessionScope.isAuthenticated == null}">
+    <c:redirect url="/"/>
+</c:if>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

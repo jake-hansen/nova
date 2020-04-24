@@ -55,7 +55,7 @@ public class Register extends HttpServlet {
         UserDao ud = new UserDao();
 
         // Check to make sure username does not already exist
-        if (ud.getByField(User.class, "email", username) != null) {
+        if (!ud.getByField(User.class, "email", username).isEmpty()) {
             request.getSession().setAttribute("username_available", false);
             request.getSession().setAttribute("failed_register", true);
 
@@ -76,6 +76,9 @@ public class Register extends HttpServlet {
                 User newUser = new User(firstname, lastname, username, passwordHash, groupID);
                 ud.create(newUser);
             }
+
+            // Set boolean on fail check:
+            request.getSession().setAttribute("failed_register", false);
 
             // Forward to previous page
             ServletUtil.redirectToRequester(request, response);

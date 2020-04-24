@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * This Servlet is called when a user registers using the register form.
@@ -44,22 +45,19 @@ public class Delete extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         // Get variables from POST
-        String firstname = request.getParameter("firstname");
-        String lastname = request.getParameter("lastname");
         String username = request.getParameter("username");
-        String groupName = request.getParameter("groupname");
-        char[] password = request.getParameter("password").toCharArray();
 
         // Check Database for User with given email:
         UserDao ud = new UserDao();
-        User user = (User) ud.getByField(User.class, "email", username);
+        List<User> usersMatchingUsername = ud.getByField(User.class, "email", username);
 
         // Attempt to delete User:
-        if (user == null) {
+        if (usersMatchingUsername.isEmpty()) {
             request.getSession().setAttribute("failed_delete", true);
         }
         else {
-            ud.delete(User.class, user);
+            ud.delete(User.class, usersMatchingUsername.get(0));
+            request.getSession().setAttribute("failed_delete", false);
         }
 
         // Redirect:

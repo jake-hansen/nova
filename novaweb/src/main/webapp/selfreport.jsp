@@ -76,7 +76,7 @@
                     <form role="form" method="POST" action="./selfreport">
                         <div class="form-group">
                             <label for="location">Location</label>
-                            <input type="text" class="form-control" id="location" placeholder="Room number, relative location, surroundings, etc.">
+                            <input type="text" name="location" class="form-control" id="location" placeholder="Room number, relative location, surroundings, etc.">
                         </div>
                         <button type="submit" name="sos" class="btn btn-primary">Send SOS</button>
                     </form>

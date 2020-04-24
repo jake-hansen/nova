@@ -52,6 +52,19 @@ public class SetAccountability extends HttpServlet {
         // Get userID from session
         int userID = (int) request.getSession().getAttribute("user_id");
 
+        if (sos != null) {
+
+        }
+        else if (cagm != null) {
+            
+        }
+        else if (okay != null) {
+
+        }
+        else if (location != null) {
+
+        }
+
         // Forward to previous page
         ServletUtil.redirectToRequester(request, response);
 

@@ -73,7 +73,7 @@
                 <div class="card-header bg-dark text-light"><h5>I Need Help</h5></div>
                 <div class="card-body">
                     <p>I am injured and I need immediate assistance.</p>
-                    <form>
+                    <form role="form" method="POST" action="./setaccountability">
                         <div class="form-group">
                             <label for="location">Room Number</label>
                             <input type="text" class="form-control" id="location" placeholder="If you are in a room, enter the room number.">

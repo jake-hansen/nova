@@ -70,13 +70,19 @@
                     <div class="row">
                         <div class="col-sm">
                             <form role="form" method="POST" action="./register">
-                                <div class="form-group">
-                                    <label for="firstname">First Name</label>
-                                    <input type="text" class="form-control" id="firstname" name="firstname">
-                                </div>
-                                <div class="form-group">
-                                    <label for="lastname">Last Name</label>
-                                    <input type="text" class="form-control" id="lastname" name="lastname">
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <div class="form-group">
+                                            <label for="firstname">First Name</label>
+                                            <input type="text" class="form-control" id="firstname" name="firstname">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm">
+                                        <div class="form-group">
+                                            <label for="lastname">Last Name</label>
+                                            <input type="text" class="form-control" id="lastname" name="lastname">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="registeremail">Email</label>
@@ -102,7 +108,11 @@
                                     <label for="passwordconfirmation">Confirm Password</label>
                                     <input type="password" class="form-control" id="passwordconfirmation">
                                 </div>
-                                <button type="submit" class="btn btn-primary">Create Account</button>
+                                <button type="submit" class="btn btn-primary" id="createAccountButton">Create Account</button>
+                                <c:if test="${sessionScope.failed_register == false}">
+                                    <p class="text-success">Account Successfully Created</p>
+                                    <c:remove var="failed_register" scope="session"/>
+                                </c:if>
                             </form>
                         </div>
                     </div>
@@ -117,12 +127,20 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm">
-                            <form>
+                            <form method="POST" action="./delete">
                                 <div class="form-group">
-                                    <label for="accountForName">Enter the name of a person who's account you wish to delete.</label>
-                                    <input type="text" class="form-control" id="accountForName" placeholder="Student/Faculty Member Name">
+                                    <label for="deleteByEmail">Enter the email of a person who's account you wish to delete.</label>
+                                    <input type="text" class="form-control" id="deleteByEmail" placeholder="Student/Faculty Member Email" name="username">
                                 </div>
+                                <c:if test="${sessionScope.failed_delete == true}">
+                                    <p class="text-danger">User with email does not exist.</p>
+                                    <c:remove var="failed_delete" scope="session"/>
+                                </c:if>
                                 <button type="submit" class="btn btn-primary">Delete Account</button>
+                                <c:if test="${sessionScope.failed_delete == false}">
+                                    <p class="text-success">Account Successfully Deleted</p>
+                                    <c:remove var="failed_delete" scope="session"/>
+                                </c:if>
                             </form>
                         </div>
                     </div>

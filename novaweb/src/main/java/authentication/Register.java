@@ -77,6 +77,9 @@ public class Register extends HttpServlet {
                 ud.create(newUser);
             }
 
+            // Set boolean on fail check:
+            request.getSession().setAttribute("failed_register", false);
+
             // Forward to previous page
             ServletUtil.redirectToRequester(request, response);
         }

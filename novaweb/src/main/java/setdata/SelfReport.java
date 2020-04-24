@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * This Servlet is called when a user registers using the register form.
+ * This Servlet is called when a user self reports their status.
  */
 @WebServlet(name = "SelfReport", urlPatterns = "/selfreport")
 public class SelfReport extends HttpServlet {

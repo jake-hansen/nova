@@ -10,6 +10,9 @@ public class FirstResponderUpdate {
     @Column(name = "id")
     private int id;
 
+    @Column(name = "user_id")
+    private int userId;
+
     @Column(name = "update")
     private String update;
 
@@ -19,6 +22,14 @@ public class FirstResponderUpdate {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getUpdate() {

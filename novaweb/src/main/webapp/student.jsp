@@ -90,7 +90,7 @@
                 <div class="card-header bg-dark text-light"><h5>I Am Lost</h5></div>
                 <div class="card-body">
                     <p>I am not injured but I am not with other students/faculty.</p>
-                    <form>
+                    <form role="form" method="POST" action="./setaccountability">
                         <button type="submit" name="cagm" class="btn btn-primary">Come And Get Me</button>
                     </form>
                 </div>
@@ -103,7 +103,7 @@
                 <div class="card-header bg-dark text-light"><h5>I Am Okay</h5></div>
                 <div class="card-body">
                     <p>I am not injured and I am with students/faculty at a designated safe location.</p>
-                    <form>
+                    <form role="form" method="POST" action="./setaccountability">
                         <button type="submit" name="okay" class="btn btn-primary">Account For Me</button>
                     </form>
                 </div>

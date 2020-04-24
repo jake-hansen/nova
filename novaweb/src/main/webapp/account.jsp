@@ -133,19 +133,19 @@
                         </div>
                         <div class="form-group">
                             <label for="primaryphone">Primary Phone</label>
-                            <input type="text" class="form-control" id="primaryphone">
+                            <input type="text" class="form-control" id="primaryphone"/>
                         </div>
                         <div class="form-group">
                             <label for="secondaryphone">Secondary Phone</label>
-                            <input type="text" class="form-control" id="secondaryphone">
+                            <input type="text" class="form-control" id="secondaryphone"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="emergencycontactemail">Email</label>
+                            <input type="text" class="form-control" id="emergencycontactemail"/>
                         </div>
                         <div class="form-group">
                             <label for="relationship">Relationship</label>
                             <input type="text" class="form-control" id="relationship">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="text" class="form-control" id="email">
                         </div>
                         <button type="submit" class="btn btn-primary">Add Contact</button>
                     </form>

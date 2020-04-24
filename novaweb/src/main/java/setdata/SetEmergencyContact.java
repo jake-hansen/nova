@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Enumeration;
 
 /**
  * This Servlet is called when a new emergency contact is added.
@@ -54,7 +55,13 @@ public class SetEmergencyContact extends HttpServlet {
         String primaryphone = request.getParameter("primaryphone");
         String secondaryphone = request.getParameter("secondaryphone");
         String relationship = request.getParameter("relationship");
-        String email = request.getParameter("email");
+        String email = request.getParameter("emergencycontactemail");
+
+        Enumeration enumeration = request.getParameterNames();
+        while (enumeration.hasMoreElements()) {
+            String parameterName = (String) enumeration.nextElement();
+            System.out.println("Parameter = " + parameterName);
+        }
 
 
         // Create new Emergency Contact
@@ -67,6 +74,11 @@ public class SetEmergencyContact extends HttpServlet {
         newEmergencyContact.setSecondaryPhone(secondaryphone);
         newEmergencyContact.setRelationship(relationship);
         newEmergencyContact.setEmail(email);
+
+        System.out.println(firstname);
+//        System.out.println(primaryphone);
+//        System.out.println(email);
+
 
         ecd.create(newEmergencyContact);
 

@@ -10,12 +10,16 @@
 </c:if>
 
 <c:if test="${requestScope.forwarded_to_getuserdata == null}">
-    <jsp:forward page="/getuserdata" />
+    <jsp:forward page="/getuserdata"/>
 </c:if>
 
 <c:if test="${requestScope.forwarded_to_getgroupdata == null}">
     <c:set var="group_id" value="${requestScope.user_object.groupID}" scope="request"/>
-    <jsp:forward page="/getgroupdata" />
+    <jsp:forward page="/getgroupdata"/>
+</c:if>
+
+<c:if test="${requestScope.forwarded_to_getemergencycontacts == null}">
+    <jsp:forward page="/getemergencycontacts"/>
 </c:if>
 
 <!DOCTYPE html>
@@ -103,6 +107,34 @@
                 <div class="card-body">
                     <h5 class="card-title">All</h5>
                     <div class="border-top my-3"></div>
+
+                    <p>populate all emergency contacts here</p>
+                    <c:forEach var="emergency_contact" items="${requestScope.emergency_contact_list}">
+                        <c:out value="Contact"/>
+                        <c:out value="${emergency_contact.firstName}"/>
+                        <c:out value="${emergency_contact.lastName}"/>
+                        <c:out value="${emergency_contact.relationship}"/>
+                        <c:out value="${emergency_contact.primaryPhone}"/>
+                    </c:forEach>
+
+
+                    <h5 class="card-title">Add Emergency Contact</h5>
+                    <div class="border-top my-3"></div>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="relationship">Relationship</label>
+                            <input type="text" class="form-control" id="relationship">
+                        </div>
+                        <div class="form-group">
+                            <label for="number">Number</label>
+                            <input type="text" class="form-control" id="number">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Contact</button>
+                    </form>
                 </div>
             </div>
         </div>

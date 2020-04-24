@@ -52,6 +52,7 @@ public class GetEmergencyContacts extends HttpServlet {
                     (EmergencyContact.class, "userId", Integer.toString(userID));
 
             request.setAttribute("emergency_contact_list", emergencyContactList);
+            request.setAttribute("forwarded_to_getemergencycontacts", true);
 
             // Forward request back to caller
             ServletUtil.forwardToRequester(request, response);

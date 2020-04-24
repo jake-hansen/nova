@@ -55,26 +55,26 @@ public class SelfReport extends HttpServlet {
         if (sos != null) {
             userStatus.setStatusCode(1);
             userStatus.setLocation(location);
-            request.setAttribute("report_type", "sos");
+            request.getSession().setAttribute("report_type", "sos");
         }
         else if (cagm != null) {
             userStatus.setStatusCode(2);
-            request.setAttribute("report_type", "cagm");
+            request.getSession().setAttribute("report_type", "cagm");
         }
         else if (okay != null) {
             userStatus.setStatusCode(3);
-            request.setAttribute("report_type", "okay");
+            request.getSession().setAttribute("report_type", "okay");
         }
 
         if (usd.create(userStatus)) {
-            request.setAttribute("report_successful", true);
+            request.getSession().setAttribute("report_successful", true);
         }
         else {
-            request.setAttribute("report_successful", false);
+            request.getSession().setAttribute("report_successful", false);
         }
 
         // Forward to previous page
-        ServletUtil.forwardToRequester(request, response);
+        ServletUtil.redirectToRequester(request, response);
 
     }
 }

@@ -60,27 +60,29 @@
 <div class="toast" data-autohide="false" style="position: absolute; bottom: 0; left: 50%; transform: translate(-50%, 0px);">
     <div class="toast-header">
         <strong class="mr-auto">Report Status</strong>
-        <small>Now</small>
+        <small>now</small>
         <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
     <div class="toast-body">
-        <c:if test="${requestScope.report_successful == true}">
+        <c:if test="${sessionScope.report_successful == true}">
             Your status was successfully reported.
         </c:if>
-        <c:if test="${requestScope.report_successful == false}">
-            An error occurred. Your status was NOT reported.
+        <c:if test="${sessionScope.report_successful == false}">
+            An error occurred. Your status was NOT reported. This could be because your status was already reported.
         </c:if>
     </div>
 </div>
-<c:if test="${requestScope.report_successful != null}">
+<c:if test="${sessionScope.report_successful != null}">
     <script>
         $(document).ready(function(){
             $('.toast').toast('show');
         });
     </script>
 </c:if>
+<%-- Remove session variable to reset toast display for next request --%>
+<c:remove var="report_successful" scope="session"/>
 <!-- End Report Status Toast -->
 
 

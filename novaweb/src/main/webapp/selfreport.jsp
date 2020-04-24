@@ -74,12 +74,13 @@
         </c:if>
     </div>
 </div>
-
-<script>
-    $(document).ready(function(){
-        $('.toast').toast('show');
-    });
-</script>
+<c:if test="${requestScope.report_successful != null}">
+    <script>
+        $(document).ready(function(){
+            $('.toast').toast('show');
+        });
+    </script>
+</c:if>
 <!-- End Report Status Toast -->
 
 

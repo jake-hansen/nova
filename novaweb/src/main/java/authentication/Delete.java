@@ -1,10 +1,7 @@
 package authentication;
 
-import dao.GroupDao;
 import dao.UserDao;
-import datamodel.Group;
 import datamodel.User;
-import utilities.Password;
 import utilities.ServletUtil;
 
 import javax.servlet.ServletException;
@@ -13,17 +10,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 /**
- * This Servlet is called when a user registers using the register form.
+ * This Servlet is called when a user attempts to delete an account.
  */
 @WebServlet(name = "Delete", urlPatterns = "/delete")
 public class Delete extends HttpServlet {
 
     /**
-     * Processes GET request. When called, send 404 as GET should never be called for /login.
+     * Processes GET request. When called, send 404 as GET should never be called.
      * @param request - Request to use.
      * @param response - Response to use.
      * @throws ServletException

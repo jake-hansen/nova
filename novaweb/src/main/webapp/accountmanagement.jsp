@@ -117,10 +117,10 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm">
-                            <form>
+                            <form method="POST" action="./delete">
                                 <div class="form-group">
-                                    <label for="accountForName">Enter the name of a person who's account you wish to delete.</label>
-                                    <input type="text" class="form-control" id="accountForName" placeholder="Student/Faculty Member Name">
+                                    <label for="deleteByEmail">Enter the email of a person who's account you wish to delete.</label>
+                                    <input type="text" class="form-control" id="deleteByEmail" placeholder="Student/Faculty Member Email">
                                 </div>
                                 <button type="submit" class="btn btn-primary">Delete Account</button>
                             </form>

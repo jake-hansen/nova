@@ -57,7 +57,7 @@
 <!-- End Login Modal-->
 
 <!-- Report Status Toast -->
-<div class="toast" data-autohide="false" style="position: absolute; bottom: 0; left: 50%; transform: translate(-50%, 0px);">
+<div class="toast" data-autohide="false" style="position: absolute; bottom: 0; left: 50%; transform: translate(-50%, 0px); z-index: 9999;">
     <div class="toast-header">
         <strong class="mr-auto">Report Status</strong>
         <small>now</small>

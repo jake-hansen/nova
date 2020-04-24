@@ -21,6 +21,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
     <!-- Favicon Settings -->
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
@@ -54,6 +55,28 @@
     });
 </script>
 <!-- End Login Modal-->
+
+<!-- Report Status Toast -->
+<div class="toast" data-autohide="false" style="position: absolute; bottom: 0; left: 50%; transform: translate(-50%, 0px);">
+    <div class="toast-header">
+        <strong class="mr-auto">Report Status</strong>
+        <small>Now</small>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="toast-body">
+        Your status was successfully reported.
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $('.toast').toast('show');
+    });
+</script>
+<!-- End Report Status Toast -->
+
 
 <!-- Student View -->
 <div class="container">
@@ -113,14 +136,11 @@
 </div>
 
 
-<!-- Optional JavaScript -->
-<!-- Popper.js, then Bootstrap JS -->
+<!-- Popper.js-->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous">
+</script>
 </body>
 
 </html>

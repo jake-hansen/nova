@@ -110,28 +110,42 @@
 
                     <p>populate all emergency contacts here</p>
                     <c:forEach var="emergency_contact" items="${requestScope.emergency_contact_list}">
-                        <c:out value="Contact"/>
-                        <c:out value="${emergency_contact.firstName}"/>
+                        <p><c:out value="Contact"/></p>
+                        <p><c:out value="${emergency_contact.firstName}"/></p>
                         <c:out value="${emergency_contact.lastName}"/>
-                        <c:out value="${emergency_contact.relationship}"/>
                         <c:out value="${emergency_contact.primaryPhone}"/>
+                        <c:out value="${emergency_contact.secondaryPhone}"/>
+                        <c:out value="${emergency_contact.relationship}"/>
+                        <c:out value="${emergency_contact.email}"/>
                     </c:forEach>
 
 
                     <h5 class="card-title">Add Emergency Contact</h5>
                     <div class="border-top my-3"></div>
-                    <form>
+                    <form role="form" method="POST" action="./setemergencycontact">
                         <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" class="form-control" id="name">
+                            <label for="firstname">First Name</label>
+                            <input type="text" class="form-control" id="firstname">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname">Last Name</label>
+                            <input type="text" class="form-control" id="lastname">
+                        </div>
+                        <div class="form-group">
+                            <label for="primaryphone">Primary Phone</label>
+                            <input type="text" class="form-control" id="primaryphone">
+                        </div>
+                        <div class="form-group">
+                            <label for="secondaryphone">Secondary Phone</label>
+                            <input type="text" class="form-control" id="secondaryphone">
                         </div>
                         <div class="form-group">
                             <label for="relationship">Relationship</label>
                             <input type="text" class="form-control" id="relationship">
                         </div>
                         <div class="form-group">
-                            <label for="number">Number</label>
-                            <input type="text" class="form-control" id="number">
+                            <label for="email">Email</label>
+                            <input type="text" class="form-control" id="email">
                         </div>
                         <button type="submit" class="btn btn-primary">Add Contact</button>
                     </form>

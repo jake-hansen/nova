@@ -2,10 +2,11 @@ package datamodel;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "first_responder_updates")
-public class FirstResponderUpdate {
+public class FirstResponderUpdate implements Serializable {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
@@ -13,7 +14,7 @@ public class FirstResponderUpdate {
     @Column(name = "user_id")
     private int userId;
 
-    @Column(name = "update")
+    @Column(name = "update_text")
     private String update;
 
     public int getId() {

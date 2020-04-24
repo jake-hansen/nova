@@ -1,5 +1,7 @@
 package setdata;
 
+import dao.FirstResponderUpdateDao;
+import datamodel.FirstResponderUpdate;
 import utilities.ServletUtil;
 
 import javax.servlet.ServletException;
@@ -38,10 +40,24 @@ public class SetFirstResponderUpdate extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         // Get variables from POST
-        String sos = request.getParameter("informational_update");
+        String informationalUpdate = request.getParameter("informational_update");
 
         // Get userID from session
         int userID = (int) request.getSession().getAttribute("user_id");
+
+        // Set informational update in database
+        FirstResponderUpdateDao frud = new FirstResponderUpdateDao();
+
+        FirstResponderUpdate fru = new FirstResponderUpdate();
+        fru.setUserId(userID);
+        fru.setUpdate(informationalUpdate);
+
+        if (frud.create(fru)) {
+            request.getSession().setAttribute("update_published", true);
+        }
+        else {
+            request.getSession().setAttribute("update_published", false);
+        }
 
         // Forward to previous page
         ServletUtil.redirectToRequester(request, response);

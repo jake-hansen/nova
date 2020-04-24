@@ -1,4 +1,6 @@
 package dao;
 
-public class FirstResponderUpdateDao extends Dao<FirstResponderUpdateDao> {
+import datamodel.FirstResponderUpdate;
+
+public class FirstResponderUpdateDao extends Dao<FirstResponderUpdate> {
 }

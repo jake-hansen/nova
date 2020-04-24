@@ -72,11 +72,13 @@
             <div class="card mb-3">
                 <div class="card-header bg-dark text-light"><h5>Send Informational Update</h5></div>
                 <div class="card-body">
-                    <div class="form-group">
-                        <label for="informational_update">Type your update...</label>
-                        <input type="text" name="informational_update" class="form-control" id="informational_update" placeholder="Current status of crisis.">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Update</button>
+                    <form role="form" method="POST" action="./setfirstresponderupdate">
+                        <div class="form-group">
+                            <label for="informational_update">Type your update...</label>
+                            <input type="text" name="informational_update" class="form-control" id="informational_update" placeholder="Current status of crisis.">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Update</button>
+                    </form>
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="requester" value="/student.jsp" scope="request"/>
+<c:set var="requester" value="/selfreport.jsp" scope="request"/>
 
 <c:if test="${sessionScope.checkedsession == null}">
     <jsp:forward page="/checksession"/>
@@ -66,7 +66,12 @@
         </button>
     </div>
     <div class="toast-body">
-        Your status was successfully reported.
+        <c:if test="${requestScope.report_successful == true}">
+            Your status was successfully reported.
+        </c:if>
+        <c:if test="${requestScope.report_successful == false}">
+            An error occurred. Your status was NOT reported.
+        </c:if>
     </div>
 </div>
 
@@ -113,7 +118,7 @@
                 <div class="card-header bg-dark text-light"><h5>I Am Lost</h5></div>
                 <div class="card-body">
                     <p>I am not injured but I am not with other students/faculty.</p>
-                    <form role="form" method="POST" action="./selfreporty">
+                    <form role="form" method="POST" action="./selfreport">
                         <button type="submit" name="cagm" class="btn btn-primary">Come And Get Me</button>
                     </form>
                 </div>

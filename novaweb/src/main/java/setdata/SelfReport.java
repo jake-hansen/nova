@@ -44,6 +44,7 @@ public class SelfReport extends HttpServlet {
         String cagm = request.getParameter("cagm");
         String okay = request.getParameter("okay");
         String location = request.getParameter("location");
+        request.setAttribute("requester", "/selfreport.jsp");
 
         // Get userID from session
         int userID = (int) request.getSession().getAttribute("user_id");
@@ -73,7 +74,7 @@ public class SelfReport extends HttpServlet {
         }
 
         // Forward to previous page
-        ServletUtil.redirectToRequester(request, response);
+        ServletUtil.forwardToRequester(request, response);
 
     }
 }

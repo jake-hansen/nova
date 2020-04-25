@@ -1,7 +1,8 @@
 package setdata;
 
 import dao.UserDao;
-import datamodel.User;
+import dao.UserStatusDao;
+import datamodel.UserStatus;
 import utilities.ServletUtil;
 
 import javax.servlet.ServletException;
@@ -46,10 +47,22 @@ public class AccountForMember extends HttpServlet {
 
         //Parse out first and last name entered
         String[] firstAndLast = accountFor.split("\\s+");
+        String firstName = firstAndLast[0];
+        String lastName = firstAndLast[1];
 
-        System.out.println(firstAndLast[0]);
-        System.out.println(firstAndLast[1]);
+        // Create new UserDao connection
+        UserDao ud = new UserDao();
 
+        // Get userID by user first and last name
+        int userID = ud.getByFirstAndLastName(firstName, lastName).getId();
+
+        //Create and set the looked up user status object
+        UserStatusDao usd = new UserStatusDao();
+        UserStatus userStatus = new UserStatus();
+        userStatus.setUserId(userID);
+
+        // Accounted for status code is 3; user is now accounted for
+        userStatus.setStatusCode(3);
 
         // Forward to previous page
         ServletUtil.redirectToRequester(request, response);

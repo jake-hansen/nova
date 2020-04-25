@@ -10,17 +10,12 @@
     <jsp:forward page="/getuserdata"/>
 </c:if>
 
-<c:if test="${requestScope.user_object.groupID == 1}">
-    <jsp:forward page="/faculty.jsp" />
-</c:if>
-<c:if test="${requestScope.user_object.groupID == 2}">
-    <jsp:forward page="/student.jsp" />
+<c:if test="${requestScope.user_object.groupID == 1 || requestScope.user_object.groupID == 2 ||
+              requestScope.user_object.groupID == 4}">
+    <jsp:forward page="/selfreport.jsp" />
 </c:if>
 <c:if test="${requestScope.user_object.groupID == 3}">
     <jsp:forward page="/firstresponders.jsp" />
-</c:if>
-<c:if test="${requestScope.user_object.groupID == 4}">
-    <jsp:forward page="/administrators.jsp" />
 </c:if>
 
 <!DOCTYPE html>

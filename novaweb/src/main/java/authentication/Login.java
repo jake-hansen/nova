@@ -6,6 +6,7 @@ import utilities.ServletUtil;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -58,14 +59,18 @@ public class Login extends HttpServlet {
             // Done processing password, remove password from memory
             Arrays.fill(password, '0');
 
-            // If user match was found and they are not in the unauthenticated group, authenticate them
+            // If username and password match was found and they are not in the unauthenticated group, authenticate them
             if (user != null && user.getGroupID() != 5) {
                 UserAuth.authenticate(request, response, user, request.getSession().getId());
             }
-            // If user match was not found, don't authenticate
+            // If username and password match was not found, don't authenticate
             else {
-                User userFail = ud.getByField(User.class, "email", username).get(0);
-                UserAuth.failAuthentication(request, response, userFail, request.getSession().getId());
+                User userNotFound = null;
+                List<User> testUserExistence = ud.getByField(User.class, "email", username);
+                if (!testUserExistence.isEmpty()) {
+                    userNotFound = ud.getByField(User.class, "email", username).get(0);
+                }
+                UserAuth.failAuthentication(request, response, userNotFound, request.getSession().getId());
             }
         }
         // Redirect to requester

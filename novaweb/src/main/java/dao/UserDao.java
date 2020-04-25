@@ -26,4 +26,22 @@ public class UserDao extends Dao<User> {
 
         return returnUser;
     }
+
+    public User getByFirstAndLastName(String firstName, String lastName) {
+        User returnUser = null;
+        List<User> userMatch = getByField(User.class, "lastName", lastName);
+
+        // Found potentially multiple matches
+        if (!userMatch.isEmpty()) {
+            // Try to match first name
+            for (User u : userMatch) {
+                if (u.getFirstName().toUpperCase().equals(firstName.toUpperCase())) {
+                    // Return first match
+                    returnUser = u;
+                    break;
+                }
+            }
+        }
+        return returnUser;
+    }
 }

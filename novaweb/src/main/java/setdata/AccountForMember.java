@@ -33,7 +33,6 @@ public class AccountForMember extends HttpServlet {
 
     /**
      * Processes POST request. Updates the searched for member to be accounted in the database.
-     * information.
      *
      * @param request  - Request to use.
      * @param response - Response to use.

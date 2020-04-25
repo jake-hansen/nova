@@ -56,7 +56,10 @@ public class AccountForMember extends HttpServlet {
         User user = ud.getByFirstAndLastName(firstName, lastName);
         if (user == null) {
             request.getSession().setAttribute("failed_lookup", true);
-        } else {
+        }
+
+        //User is in the database so set the user status
+        else {
             // Get userID by user first and last name
             int userID = user.getId();
 

@@ -2,6 +2,7 @@ package setdata;
 
 import dao.UserDao;
 import dao.UserStatusDao;
+import datamodel.User;
 import datamodel.UserStatus;
 import utilities.ServletUtil;
 
@@ -53,16 +54,24 @@ public class AccountForMember extends HttpServlet {
         // Create new UserDao connection
         UserDao ud = new UserDao();
 
-        // Get userID by user first and last name
-        int userID = ud.getByFirstAndLastName(firstName, lastName).getId();
+        //Check if the user returns null then inform the user that this name isn't in our database
+        User user = ud.getByFirstAndLastName(firstName, lastName);
+        if (user == null) {
+            request.getSession().setAttribute("failed_lookup", true);
+        } else {
+            // Get userID by user first and last name
+            int userID = user.getId();
 
-        //Create and set the looked up user status object
-        UserStatusDao usd = new UserStatusDao();
-        UserStatus userStatus = new UserStatus();
-        userStatus.setUserId(userID);
+            //Create and set the looked up user status object
+            UserStatus userStatus = new UserStatus();
+            userStatus.setUserId(userID);
 
-        // Accounted for status code is 3; user is now accounted for
-        userStatus.setStatusCode(3);
+            // Accounted for status code is 3; user is now accounted for
+            userStatus.setStatusCode(3);
+
+            // Set boolean on fail check:
+            request.getSession().setAttribute("failed_lookup", false);
+        }
 
         // Forward to previous page
         ServletUtil.redirectToRequester(request, response);

@@ -108,6 +108,14 @@
                                 </div>
                                 <button type="submit" class="btn btn-primary">Account For Student/Faculty Member
                                 </button>
+                                <c:if test="${sessionScope.failed_lookup == false}">
+                                    <p class="text-success">Accounted for Member</p>
+                                    <c:remove var="failed_lookup" scope="session"/>
+                                </c:if>
+                                <c:if test="${sessionScope.failed_register == false}">
+                                    <p class="text-danger">Member Does Not Exist</p>
+                                    <c:remove var="failed_lookup" scope="session"/>
+                                </c:if>
                             </form>
                         </div>
                     </div>

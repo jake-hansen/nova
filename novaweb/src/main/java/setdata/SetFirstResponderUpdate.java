@@ -30,8 +30,8 @@ public class SetFirstResponderUpdate extends HttpServlet {
     }
 
     /**
-     * Processes POST request. Gets form parameters for accounting for user. Updates the status table with the provided
-     * information.
+     * Processes POST request. Gets form parameters for sending status updates and adds a new record to the database
+     * with the corresponding first responder update.
      * @param request - Request to use.
      * @param response - Response to use.
      * @throws ServletException

@@ -144,7 +144,8 @@
                         </div>
                         <div class="form-group">
                             <label for="emergencycontactemail">Email</label>
-                            <input type="text" class="form-control" id="emergencycontactemail" name="emergencycontactemail">
+                            <input type="text" class="form-control" id="emergencycontactemail"
+                                   name="emergencycontactemail">
                         </div>
                         <button type="submit" class="btn btn-primary">Add Contact</button>
                     </form>

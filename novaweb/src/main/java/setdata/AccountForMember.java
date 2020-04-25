@@ -15,7 +15,7 @@ import java.io.IOException;
 /**
  * This Servlet is called when a user accounts for another member.
  */
-@WebServlet(name = "SelfReport", urlPatterns = "/accountmember")
+@WebServlet(name = "AccountForMember", urlPatterns = "/accountformember")
 public class AccountForMember extends HttpServlet {
 
     /**

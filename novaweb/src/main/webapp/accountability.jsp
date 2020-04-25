@@ -99,7 +99,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm">
-                            <form role="form" method="POST" action="./accountmember">
+                            <form role="form" method="POST" action="./accountformember">
                                 <div class="form-group">
                                     <label for="accountForName">Enter the name of a person you wish to account
                                         for.</label>

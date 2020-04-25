@@ -1,12 +1,7 @@
 package setdata;
 
 import dao.EmergencyContactDao;
-import dao.GroupDao;
-import dao.UserDao;
 import datamodel.EmergencyContact;
-import datamodel.Group;
-import datamodel.User;
-import utilities.Password;
 import utilities.ServletUtil;
 
 import javax.servlet.ServletException;
@@ -15,8 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Enumeration;
 
 /**
  * This Servlet is called when a new emergency contact is added.
@@ -38,8 +31,7 @@ public class SetEmergencyContact extends HttpServlet {
     }
 
     /**
-     * Processes POST request. Gets form parameters for registering user and checks to make sure information is
-     * valid to be registered. If information is valid, user is registered and logged in. Otherwise, sends redirect back
+     * Processes POST request. Gets form parameters for setting emergency contact information for the signed in user.
      * to caller.
      *
      * @param request  - Request to use.

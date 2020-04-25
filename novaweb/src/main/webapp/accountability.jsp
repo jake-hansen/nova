@@ -83,14 +83,50 @@
                         <div class="col-sm">
 
                                 <div>
-                                    <p>Search Result</p>
+                                    <h5>Search Result</h5>
+                                    <hr>
                                     <c:if test="${sessionScope.search_found_user == true}">
-                                        <p>Name: <c:out value="${sessionScope.found_user_object.firstName}" /> <c:out value="${sessionScope.found_user_object.lastName}" /></p>
-                                        <p>Email: <c:out value="${sessionScope.found_user_object.email}" /></p>
-                                        <p>Status: </p>
+                                        <c:set var="user_id_search" value="${sessionScope.found_user_object.id}" scope="request"/>
+                                        <c:if test="${requestScope.forwarded_to_getemergencycontacts == null}">
+                                            <jsp:forward page="/getemergencycontacts"/>
+                                        </c:if>
+                                        <p><strong>Name: </strong><c:out value="${sessionScope.found_user_object.firstName}" /> <c:out value="${sessionScope.found_user_object.lastName}" /></p>
+                                        <p><strong>Email: </strong><c:out value="${sessionScope.found_user_object.email}" /></p>
+                                        <p>
+                                        <strong>Status: </strong> <c:choose>
+                                                <c:when test="${sessionScope.found_user_object_status.statusCode == 1}">
+                                                    <span class="text-danger">SOS</span> - <c:out value="${sessionScope.found_user_object_status.location}"/>
+                                                </c:when>
+                                                <c:when test="${sessionScope.found_user_object_status.statusCode == 2}">
+                                                    <span class="text-warning">Lost</span> - <c:out value="${sessionScope.found_user_object_status.location}"/>
+                                                </c:when>
+                                                <c:when test="${sessionScope.found_user_object_status.statusCode == 3}">
+                                                    <span class="text-success">Okay</span>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <span class="text-warning">Not Accounted</span>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </p>
+                                        <strong>Emergency Contacts</strong>
+                                        <hr>
+                                        <c:forEach var="emergency_contact" items="${requestScope.emergency_contact_list}">
+                                            <p>Name: <c:out value="${emergency_contact.firstName}"/> <c:out
+                                                    value="${emergency_contact.lastName}"/></p>
+                                            <p>Relationship: <c:out value="${emergency_contact.relationship}"/></p>
+                                            <p>Primary Phone: <c:out value="${emergency_contact.primaryPhone}"/></p>
+                                            <p>Secondary Phone: <c:out value="${emergency_contact.secondaryPhone}"/></p>
+                                            <p>Email: <c:out value="${emergency_contact.email}"/></p>
+                                            <div class="border-top my-3"></div>
+                                        </c:forEach>
+                                    </c:if>
+                                    <c:if test="${sessionScope.search_found_user == false}">
+                                        <p class="text-danger">No result found</p>
                                     </c:if>
 
                                     <c:remove var="found_user_object" scope="session"/>
+                                    <c:remove var="search_found_user" scope="session"/>
+                                    <c:remove var="found_user_object_status" scope="session"/>
                                 </div>
 
                         </div>

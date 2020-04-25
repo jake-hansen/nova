@@ -45,13 +45,14 @@ public class GetEmergencyContacts extends HttpServlet {
             response.sendRedirect(request.getHeader("Referer"));
         } else {
             // Get userID from request
-            int userID = (int) request.getSession().getAttribute("user_id");
+            int userID = (int) request.getAttribute("user_id_search");
 
             EmergencyContactDao ecd = new EmergencyContactDao();
             List<EmergencyContact> emergencyContactList = ecd.getByField
                     (EmergencyContact.class, "userId", Integer.toString(userID));
 
             request.setAttribute("emergency_contact_list", emergencyContactList);
+            request.setAttribute("forwarded_to_getemergencycontacts", true);
 
             // Forward request back to caller
             ServletUtil.forwardToRequester(request, response);

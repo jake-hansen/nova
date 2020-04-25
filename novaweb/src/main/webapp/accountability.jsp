@@ -69,7 +69,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm">
-                            <form>
+                            <form role="form" method="POST" action="./searchuserbyname">
                                 <div class="form-group">
                                     <label for="first_name_search">Enter name of person to search for</label>
                                     <input type="text" name="first_name_search" class="form-control" id="first_name_search" placeholder="First Name">
@@ -81,14 +81,18 @@
                             </form>
                         </div>
                         <div class="col-sm">
-                            <form>
-                                <div class="form-group">
-                                    <label for="accountabilityResult">Search Result</label>
-                                    <input type="text" class="form-control" id="accountabilityResult" placeholder="Unaccounted For" disabled>
-                                    <input type="text" class="form-control" id="emergencyContactResult" placeholder="Emergency_Contact_Name" disabled>
-                                    <input type="text" class="form-control" id="emergencyContactPhoneNumber" placeholder="Emergency_Contact_Phone#" disabled>
+
+                                <div>
+                                    <p>Search Result</p>
+                                    <c:if test="${sessionScope.search_found_user == true}">
+                                        <p>Name: <c:out value="${sessionScope.found_user_object.firstName}" /> <c:out value="${sessionScope.found_user_object.lastName}" /></p>
+                                        <p>Email: <c:out value="${sessionScope.found_user_object.email}" /></p>
+                                        <p>Status: </p>
+                                    </c:if>
+
+                                    <c:remove var="found_user_object" scope="session"/>
                                 </div>
-                            </form>
+
                         </div>
                     </div>
                 </div>

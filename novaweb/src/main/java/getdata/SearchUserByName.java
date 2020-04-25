@@ -1,23 +1,21 @@
 package getdata;
 
 import authentication.UserAuth;
-import dao.FirstResponderUpdateDao;
 import dao.UserDao;
-import datamodel.FirstResponderUpdate;
 import datamodel.User;
 import utilities.ServletUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet(name = "SearchUserByName", urlPatterns = "/searchuserbyname")
-public class SearchUserByName {
+public class SearchUserByName extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doGet(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

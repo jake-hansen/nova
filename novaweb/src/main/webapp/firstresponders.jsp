@@ -60,6 +60,35 @@
 </script>
 <!-- End Login Modal-->
 
+<!-- Send Update Status Toast -->
+<div class="toast" data-autohide="false" style="position: absolute; bottom: 0; left: 50%; transform: translate(-50%, 0px); z-index: 9999;">
+    <div class="toast-header">
+        <strong class="mr-auto">Informational Update</strong>
+        <small>now</small>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="toast-body">
+        <c:if test="${sessionScope.update_published == true}">
+            Your update was published successfully.
+        </c:if>
+        <c:if test="${sessionScope.update_published == false}">
+            An error occurred. Your update was NOT published successfully.
+        </c:if>
+    </div>
+</div>
+<c:if test="${sessionScope.update_published != null}">
+    <script>
+        $(document).ready(function(){
+            $('.toast').toast('show');
+        });
+    </script>
+</c:if>
+<%-- Remove session variable to reset toast display for next request --%>
+<c:remove var="update_published" scope="session"/>
+<!-- Send Update Status Toast -->
+
 <!-- Faculty View -->
 <div class="container">
     <div class="row">
@@ -77,11 +106,13 @@
             <div class="card mb-3">
                 <div class="card-header bg-dark text-light"><h5>Send Informational Update</h5></div>
                 <div class="card-body">
-                    <div class="form-group">
-                        <label for="informationalUpdate">Type your update...</label>
-                        <input type="text" class="form-control" id="informationalUpdate" placeholder="Current status of crisis.">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Update</button>
+                    <form role="form" method="POST" action="./setfirstresponderupdate">
+                        <div class="form-group">
+                            <label for="informational_update">Type your update...</label>
+                            <input type="text" name="informational_update" class="form-control" id="informational_update" placeholder="Current status of crisis.">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Update</button>
+                    </form>
                 </div>
             </div>
         </div>

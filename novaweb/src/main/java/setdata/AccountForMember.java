@@ -44,9 +44,12 @@ public class AccountForMember extends HttpServlet {
         // Get variables from POST
         String accountFor = request.getParameter("accountForName");
 
-        // Get userID from session
-        int userID = (int) request.getSession().getAttribute("user_id");
-        
+        //Parse out first and last name entered
+        String[] firstAndLast = accountFor.split("\\s+");
+
+        System.out.println(firstAndLast[0]);
+        System.out.println(firstAndLast[1]);
+
 
         // Forward to previous page
         ServletUtil.redirectToRequester(request, response);

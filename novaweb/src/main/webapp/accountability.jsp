@@ -99,12 +99,15 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm">
-                            <form>
+                            <form role="form" method="POST" action="./accountmember">
                                 <div class="form-group">
-                                    <label for="accountForName">Enter the name of a person you wish to account for.</label>
-                                    <input type="text" class="form-control" id="accountForName" placeholder="Student/Faculty Member Name">
+                                    <label for="accountForName">Enter the name of a person you wish to account
+                                        for.</label>
+                                    <input type="text" class="form-control" id="accountForName" name="accountForName"
+                                           placeholder="Student/Faculty Member Name">
                                 </div>
-                                <button type="submit" class="btn btn-primary">Account For Student/Faculty Member</button>
+                                <button type="submit" class="btn btn-primary">Account For Student/Faculty Member
+                                </button>
                             </form>
                         </div>
                     </div>

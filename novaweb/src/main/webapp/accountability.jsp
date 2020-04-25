@@ -112,7 +112,7 @@
                                     <p class="text-success">Accounted for Member</p>
                                     <c:remove var="failed_lookup" scope="session"/>
                                 </c:if>
-                                <c:if test="${sessionScope.failed_register == false}">
+                                <c:if test="${sessionScope.failed_lookup == true}">
                                     <p class="text-danger">Member Does Not Exist</p>
                                     <c:remove var="failed_lookup" scope="session"/>
                                 </c:if>

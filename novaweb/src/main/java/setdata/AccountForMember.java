@@ -1,7 +1,6 @@
 package setdata;
 
 import dao.UserDao;
-import dao.UserStatusDao;
 import datamodel.User;
 import datamodel.UserStatus;
 import utilities.ServletUtil;

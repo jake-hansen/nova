@@ -108,17 +108,16 @@
                     <h5 class="card-title">All</h5>
                     <div class="border-top my-3"></div>
 
-                    <p>populate all emergency contacts here</p>
                     <c:forEach var="emergency_contact" items="${requestScope.emergency_contact_list}">
-                        <p><c:out value="Contact"/></p>
-                        <p><c:out value="${emergency_contact.firstName}"/></p>
-                        <c:out value="${emergency_contact.lastName}"/>
-                        <c:out value="${emergency_contact.primaryPhone}"/>
-                        <c:out value="${emergency_contact.secondaryPhone}"/>
-                        <c:out value="${emergency_contact.relationship}"/>
-                        <c:out value="${emergency_contact.email}"/>
+                        <h6>Contact</h6>
+                        <p><c:out value="${emergency_contact.firstName}"/> <c:out
+                                value="${emergency_contact.lastName}"/></p>
+                        <p>Relationship: <c:out value="${emergency_contact.relationship}"/></p>
+                        <p>Primary Phone: <c:out value="${emergency_contact.primaryPhone}"/></p>
+                        <p>Secondary Phone: <c:out value="${emergency_contact.secondaryPhone}"/></p>
+                        <p>Email: <c:out value="${emergency_contact.email}"/></p>
+                        <div class="border-top my-3"></div>
                     </c:forEach>
-
 
                     <h5 class="card-title">Add Emergency Contact</h5>
                     <div class="border-top my-3"></div>
@@ -132,6 +131,10 @@
                             <input type="text" class="form-control" id="lastname" name="lastname">
                         </div>
                         <div class="form-group">
+                            <label for="relationship">Relationship</label>
+                            <input type="text" class="form-control" id="relationship" name="relationship">
+                        </div>
+                        <div class="form-group">
                             <label for="primaryphone">Primary Phone</label>
                             <input type="text" class="form-control" id="primaryphone" name="primaryphone">
                         </div>
@@ -142,10 +145,6 @@
                         <div class="form-group">
                             <label for="emergencycontactemail">Email</label>
                             <input type="text" class="form-control" id="emergencycontactemail" name="emergencycontactemail">
-                        </div>
-                        <div class="form-group">
-                            <label for="relationship">Relationship</label>
-                            <input type="text" class="form-control" id="relationship" name="relationship">
                         </div>
                         <button type="submit" class="btn btn-primary">Add Contact</button>
                     </form>

@@ -125,28 +125,28 @@
                     <div style="overflow-x:auto; max-height: 400px">
                         <table id="emergencyDashboard" class="table table-bordered">
                             <thead>
-                            <tr>
-                                <th>Emergency Type</th>
-                                <th>Student/Faculty Name</th>
-                                <th>Relative Location</th>
-                            </tr>
+                                <tr>
+                                    <th>Emergency Type</th>
+                                    <th>Student/Faculty Name</th>
+                                    <th>Relative Location</th>
+                                </tr>
                             </thead>
+                            <c:forEach var="table_row" items="${requestScope.injured_and_lost_list}">
+                                <tr>
+                                    <td>1</td>
+                                    <td>2</td>
+                                    <td>3</td>
+                                </tr>
+<%--                                <tr>--%>
+<%--                                    <td><c:out value="${table_row.get(0)}"/></td>--%>
+<%--                                    <td><c:out value="${table_row.get(1)}"/></td>--%>
+<%--                                    <td><c:out value="${table_row.get(2)}"/></td>--%>
+<%--                                </tr>--%>
+                            </c:forEach>
                         </table>
                     </div>
-                    <script>
-                        function myFunction() {
-                            var table = document.getElementById("emergencyDashboard");
-                            var row = table.insertRow(1);
-                            var cell0 = row.insertCell(0);
-                            var cell1 = row.insertCell(1)
-                            var cell2 = row.insertCell(2);
-                            cell0.innerHTML = "SOS";
-                            cell1.innerHTML = "Student_1";
-                            cell2.innerHTML = "Across from library";
-                        }
-                    </script>
                     <form role="form" method="GET" action="./getalllostandinjured">
-                        <button type="submit" class="btn btn-primary" onclick="myFunction()">Refresh</button>
+                        <button type="submit" class="btn btn-primary">Refresh</button>
                     </form>
                 </div>
             </div>

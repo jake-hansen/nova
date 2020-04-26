@@ -9,6 +9,10 @@
     <c:redirect url="/"/>
 </c:if>
 
+<c:if test="${requestScope.forwarded_to_first_responder_updates == null}">
+    <c:redirect url="/getallfirstresponderupdates"/>
+</c:if>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -89,14 +93,16 @@
 <c:remove var="update_published" scope="session"/>
 <!-- Send Update Status Toast -->
 
-<!-- Faculty View -->
+<!-- First Responder View -->
 <div class="container">
     <div class="row">
         <div class="col-sm">
             <div class="card mb-3">
                 <div class="card-header bg-dark text-light"><h5>Law Enforcement/EMS Updates</h5></div>
                 <div class="card-body">
-                    <p class="card-text">Most recent updates will be shown here...</p>
+                    <p class="card-text">
+                        <c:out value="${requestScope.first_responder_updates_list}"/>
+                    </p>
                 </div>
             </div>
         </div>
@@ -133,15 +139,10 @@
                             </thead>
                             <c:forEach var="table_row" items="${requestScope.injured_and_lost_list}">
                                 <tr>
-                                    <td>1</td>
-                                    <td>2</td>
-                                    <td>3</td>
+                                    <td><c:out value="${table_row.get(0)}"/></td>
+                                    <td><c:out value="${table_row.get(1)}"/></td>
+                                    <td><c:out value="${table_row.get(2)}"/></td>
                                 </tr>
-<%--                                <tr>--%>
-<%--                                    <td><c:out value="${table_row.get(0)}"/></td>--%>
-<%--                                    <td><c:out value="${table_row.get(1)}"/></td>--%>
-<%--                                    <td><c:out value="${table_row.get(2)}"/></td>--%>
-<%--                                </tr>--%>
                             </c:forEach>
                         </table>
                     </div>

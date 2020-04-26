@@ -1,18 +1,15 @@
-package test;
+package tests;
 
-import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.*;
 import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.Select;
 
-public class userCreateDeleteTest {
+public class userDataTest {
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
@@ -27,7 +24,7 @@ public class userCreateDeleteTest {
     }
 
     @Test
-    public void testUserCreateDelete() throws Exception {
+    public void testUserData() throws Exception {
         driver.get("http://localhost:8080/novaweb/");
         driver.findElement(By.xpath("(//button[@type='button'])[2]")).click();
         driver.findElement(By.id("email")).click();
@@ -38,28 +35,12 @@ public class userCreateDeleteTest {
         driver.findElement(By.id("password")).sendKeys("password");
         driver.findElement(By.xpath("//button[@type='submit']")).click();
         Thread.sleep(1000);
-        driver.findElement(By.linkText("Account Management")).click();
-        Thread.sleep(500);
-        driver.findElement(By.id("firstname")).click();
-        driver.findElement(By.id("firstname")).clear();
-        driver.findElement(By.id("firstname")).sendKeys("Test");
-        driver.findElement(By.id("lastname")).clear();
-        driver.findElement(By.id("lastname")).sendKeys("Delete");
-        driver.findElement(By.id("registeremail")).clear();
-        driver.findElement(By.id("registeremail")).sendKeys("testdelete@testdelete.com");
-        driver.findElement(By.id("registerpassword")).clear();
-        driver.findElement(By.id("registerpassword")).sendKeys("password");
-        driver.findElement(By.id("passwordconfirmation")).clear();
-        driver.findElement(By.id("passwordconfirmation")).sendKeys("password");
-        driver.findElement(By.id("createAccountButton")).click();
+        driver.findElement(By.linkText("Profile")).click();
         Thread.sleep(1000);
-        assertEquals("Account Successfully Created", driver.findElement(By.xpath("//p")).getText());
-        driver.findElement(By.id("deleteByEmail")).click();
-        driver.findElement(By.id("deleteByEmail")).clear();
-        driver.findElement(By.id("deleteByEmail")).sendKeys("testdelete@testdelete.com");
-        driver.findElement(By.xpath("(//button[@type='submit'])[4]")).click();
-        Thread.sleep(1000);
-        assertEquals("Account Successfully Deleted", driver.findElement(By.xpath("//p")).getText());
+        assertEquals("Test", driver.findElement(By.xpath("//p")).getText());
+        assertEquals("User", driver.findElement(By.xpath("//p[2]")).getText());
+        assertEquals("testuser@testuser.com", driver.findElement(By.xpath("//p[3]")).getText());
+        assertEquals("Administrators", driver.findElement(By.xpath("//p[4]")).getText());
     }
 
     @After

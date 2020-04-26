@@ -1,18 +1,15 @@
-package test;
+package tests;
 
-import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.*;
 import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.Select;
 
-public class userDataTest {
+public class loginTest {
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
@@ -27,7 +24,7 @@ public class userDataTest {
     }
 
     @Test
-    public void testUserData() throws Exception {
+    public void testLogin() throws Exception {
         driver.get("http://localhost:8080/novaweb/");
         driver.findElement(By.xpath("(//button[@type='button'])[2]")).click();
         driver.findElement(By.id("email")).click();
@@ -37,13 +34,9 @@ public class userDataTest {
         driver.findElement(By.id("password")).clear();
         driver.findElement(By.id("password")).sendKeys("password");
         driver.findElement(By.xpath("//button[@type='submit']")).click();
+        assertTrue(isElementPresent(By.xpath("//button[@type='submit']")));
         Thread.sleep(1000);
-        driver.findElement(By.linkText("Profile")).click();
-        Thread.sleep(1000);
-        assertEquals("Test", driver.findElement(By.xpath("//p")).getText());
-        assertEquals("User", driver.findElement(By.xpath("//p[2]")).getText());
-        assertEquals("testuser@testuser.com", driver.findElement(By.xpath("//p[3]")).getText());
-        assertEquals("Administrators", driver.findElement(By.xpath("//p[4]")).getText());
+        assertEquals("Logout", driver.findElement(By.xpath("//button[@type='submit']")).getText());
     }
 
     @After

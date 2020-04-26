@@ -13,6 +13,10 @@
     <jsp:forward page="/getallfirstresponderupdates"/>
 </c:if>
 
+<c:if test="${requestScope.dashboard_updated == null}">
+    <jsp:forward page="/getalllostandinjured"/>
+</c:if>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -146,9 +150,6 @@
                             </c:forEach>
                         </table>
                     </div>
-                    <form role="form" method="GET" action="./getalllostandinjured">
-                        <button type="submit" class="btn btn-primary">Refresh</button>
-                    </form>
                 </div>
             </div>
         </div>

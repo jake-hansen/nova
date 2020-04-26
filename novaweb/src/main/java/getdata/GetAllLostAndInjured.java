@@ -21,7 +21,7 @@ import java.util.List;
 public class GetAllLostAndInjured extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doGet(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -70,8 +70,9 @@ public class GetAllLostAndInjured extends HttpServlet {
 
         // Set list as attribute:
         request.setAttribute("injured_and_lost_list", injured_and_lost_users);
+        request.setAttribute("dashboard_updated", true);
 
         // Forward to requester
-        ServletUtil.redirectToRequester(request, response);
+        ServletUtil.forwardToRequester(request, response);
     }
 }

@@ -10,12 +10,16 @@
 </c:if>
 
 <c:if test="${requestScope.forwarded_to_getuserdata == null}">
-    <jsp:forward page="/getuserdata" />
+    <jsp:forward page="/getuserdata"/>
 </c:if>
 
 <c:if test="${requestScope.forwarded_to_getgroupdata == null}">
     <c:set var="group_id" value="${requestScope.user_object.groupID}" scope="request"/>
-    <jsp:forward page="/getgroupdata" />
+    <jsp:forward page="/getgroupdata"/>
+</c:if>
+
+<c:if test="${requestScope.forwarded_to_getemergencycontacts == null}">
+    <jsp:forward page="/getemergencycontacts"/>
 </c:if>
 
 <!DOCTYPE html>
@@ -103,6 +107,48 @@
                 <div class="card-body">
                     <h5 class="card-title">All</h5>
                     <div class="border-top my-3"></div>
+
+                    <c:forEach var="emergency_contact" items="${requestScope.emergency_contact_list}">
+                        <h6>Contact</h6>
+                        <p><c:out value="${emergency_contact.firstName}"/> <c:out
+                                value="${emergency_contact.lastName}"/></p>
+                        <p>Relationship: <c:out value="${emergency_contact.relationship}"/></p>
+                        <p>Primary Phone: <c:out value="${emergency_contact.primaryPhone}"/></p>
+                        <p>Secondary Phone: <c:out value="${emergency_contact.secondaryPhone}"/></p>
+                        <p>Email: <c:out value="${emergency_contact.email}"/></p>
+                        <div class="border-top my-3"></div>
+                    </c:forEach>
+
+                    <h5 class="card-title">Add Emergency Contact</h5>
+                    <div class="border-top my-3"></div>
+                    <form role="form" method="POST" action="./setemergencycontact">
+                        <div class="form-group">
+                            <label for="firstname">First Name</label>
+                            <input type="text" class="form-control" id="firstname" name="firstname">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname">Last Name</label>
+                            <input type="text" class="form-control" id="lastname" name="lastname">
+                        </div>
+                        <div class="form-group">
+                            <label for="relationship">Relationship</label>
+                            <input type="text" class="form-control" id="relationship" name="relationship">
+                        </div>
+                        <div class="form-group">
+                            <label for="primaryphone">Primary Phone</label>
+                            <input type="text" class="form-control" id="primaryphone" name="primaryphone">
+                        </div>
+                        <div class="form-group">
+                            <label for="secondaryphone">Secondary Phone</label>
+                            <input type="text" class="form-control" id="secondaryphone" name="secondaryphone">
+                        </div>
+                        <div class="form-group">
+                            <label for="emergencycontactemail">Email</label>
+                            <input type="text" class="form-control" id="emergencycontactemail"
+                                   name="emergencycontactemail">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Contact</button>
+                    </form>
                 </div>
             </div>
         </div>

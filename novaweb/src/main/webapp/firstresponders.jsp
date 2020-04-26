@@ -145,7 +145,9 @@
                             cell2.innerHTML = "Across from library";
                         }
                     </script>
-                    <button type="button" class="btn btn-primary" onclick="myFunction()">Refresh</button>
+                    <form role="form" method="GET" action="./getalllostandinjured">
+                        <button type="submit" class="btn btn-primary" onclick="myFunction()">Refresh</button>
+                    </form>
                 </div>
             </div>
         </div>

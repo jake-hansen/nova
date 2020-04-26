@@ -19,17 +19,24 @@ public class GetAllFirstResponderUpdates extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         List<FirstResponderUpdate> firstResponderUpdates = null;
         FirstResponderUpdateDao frud = new FirstResponderUpdateDao();
-
         firstResponderUpdates = frud.getAll(FirstResponderUpdate.class);
 
-        request.setAttribute("first_responder_updates_list", firstResponderUpdates);
+        // Set update
+        if (!firstResponderUpdates.isEmpty()) {
+            String lastUpdate = firstResponderUpdates.get(firstResponderUpdates.size() - 1).getUpdate();
+            request.setAttribute("first_responder_updates_list", lastUpdate);
+        }
+        else {
+            request.setAttribute("first_responder_updates_list", "No updates at this time...");
+        }
 
         // Before forward, set forwarded parameter
         request.setAttribute("forwarded_to_first_responder_updates", true);
 
         // Forward to requester
-        ServletUtil.redirectToRequester(request, response);
+        ServletUtil.forwardToRequester(request, response);
     }
 }

@@ -10,7 +10,7 @@
 </c:if>
 
 <c:if test="${requestScope.forwarded_to_first_responder_updates == null}">
-    <c:redirect url="/getallfirstresponderupdates"/>
+    <jsp:forward page="/getallfirstresponderupdates"/>
 </c:if>
 
 <!DOCTYPE html>

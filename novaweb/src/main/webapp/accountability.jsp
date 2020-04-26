@@ -71,18 +71,20 @@
                         <div class="col-sm">
                             <form role="form" method="POST" action="./searchuserbyname">
                                 <div class="form-group">
-                                    <label for="first_name_search">Enter name of person to search for</label>
-                                    <input type="text" name="first_name_search" class="form-control" id="first_name_search" placeholder="First Name">
+                                    <label for="first_name_search">Enter name of person to search for.</label>
+                                    <input type="text" name="first_name_search" class="form-control"
+                                           id="first_name_search" placeholder="First Name">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="last_name_search" class="form-control" id="last_name_search" placeholder="Last Name">
+                                    <input type="text" name="last_name_search" class="form-control"
+                                           id="last_name_search" placeholder="Last Name">
                                 </div>
                                 <button type="submit" class="btn btn-primary">Search</button>
                             </form>
                         </div>
                         <div class="col-sm">
 
-                                <div>
+                            <div>
                                     <h5>Search Result</h5>
                                     <hr>
                                     <c:if test="${sessionScope.search_found_user == true}">

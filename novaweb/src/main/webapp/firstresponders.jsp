@@ -104,7 +104,7 @@
             <div class="card mb-3">
                 <div class="card-header bg-dark text-light"><h5>Law Enforcement/EMS Updates</h5></div>
                 <div class="card-body">
-                    <p class="card-text">
+                    <p class="card-text" id="latest_updates" name="latest_updates">
                         <c:out value="${requestScope.first_responder_updates_list}"/>
                     </p>
                 </div>

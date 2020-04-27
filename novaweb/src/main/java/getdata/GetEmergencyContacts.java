@@ -44,8 +44,15 @@ public class GetEmergencyContacts extends HttpServlet {
         if (!UserAuth.isAuthenticated(request)) {
             response.sendRedirect(request.getHeader("Referer"));
         } else {
-            // Get userID from request
-            int userID = (int) request.getSession().getAttribute("user_id");
+            // Get userID from request, if its not present, use user_id from session
+            int userID;
+            if (request.getAttribute("user_id_search") == null) {
+                userID = (int) request.getSession().getAttribute("user_id");
+            } else {
+                userID = (int) request.getAttribute("user_id_search");
+            }
+
+
 
             EmergencyContactDao ecd = new EmergencyContactDao();
             List<EmergencyContact> emergencyContactList = ecd.getByField

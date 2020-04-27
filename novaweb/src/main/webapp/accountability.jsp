@@ -144,12 +144,23 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm">
-                            <form>
+                            <form role="form" method="POST" action="./accountformember">
                                 <div class="form-group">
-                                    <label for="accountForName">Enter the name of a person you wish to account for.</label>
-                                    <input type="text" class="form-control" id="accountForName" placeholder="Student/Faculty Member Name">
+                                    <label for="accountForName">Enter the name of a person you wish to account
+                                        for.</label>
+                                    <input type="text" class="form-control" id="accountForName" name="accountForName"
+                                           placeholder="Student/Faculty Member Name">
                                 </div>
-                                <button type="submit" class="btn btn-primary">Account For Student/Faculty Member</button>
+                                <button type="submit" class="btn btn-primary">Account For Student/Faculty Member
+                                </button>
+                                <c:if test="${sessionScope.failed_lookup == false}">
+                                    <p class="text-success">Accounted for Member</p>
+                                    <c:remove var="failed_lookup" scope="session"/>
+                                </c:if>
+                                <c:if test="${sessionScope.failed_lookup == true}">
+                                    <p class="text-danger">Member Does Not Exist</p>
+                                    <c:remove var="failed_lookup" scope="session"/>
+                                </c:if>
                             </form>
                         </div>
                     </div>

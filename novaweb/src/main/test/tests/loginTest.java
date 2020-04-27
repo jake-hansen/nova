@@ -29,10 +29,14 @@ public class loginTest {
         driver.findElement(By.xpath("(//button[@type='button'])[2]")).click();
         driver.findElement(By.id("email")).click();
         driver.findElement(By.id("email")).clear();
+        Thread.sleep(1000);
         driver.findElement(By.id("email")).sendKeys("testuser@testuser.com");
+        Thread.sleep(500);
         driver.findElement(By.id("password")).click();
         driver.findElement(By.id("password")).clear();
+        Thread.sleep(1000);
         driver.findElement(By.id("password")).sendKeys("password");
+        Thread.sleep(500);
         driver.findElement(By.xpath("//button[@type='submit']")).click();
         assertTrue(isElementPresent(By.xpath("//button[@type='submit']")));
         Thread.sleep(1000);

@@ -9,6 +9,10 @@
     <c:redirect url="/"/>
 </c:if>
 
+<c:if test="${requestScope.forwarded_to_first_responder_updates == null}">
+    <jsp:forward page="/getallfirstresponderupdates"/>
+</c:if>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -98,7 +102,9 @@
             <div class="card mb-3">
                 <div class="card-header bg-dark text-light"><h5>Law Enforcement/EMS Updates</h5></div>
                 <div class="card-body">
-                    <p class="card-text">Updates from Law Enforcement and Emergency Services will be posted here...</p>
+                    <p class="card-text">
+                        <c:out value="${requestScope.first_responder_updates_list}"/>
+                    </p>
                 </div>
             </div>
         </div>

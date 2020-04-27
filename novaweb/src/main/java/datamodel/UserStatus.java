@@ -23,6 +23,9 @@ public class UserStatus implements Serializable{
     @Column(name = "comment")
     private String comment;
 
+    @Transient
+    private String statusName;
+
     public int getId() {
         return id;
     }
@@ -61,5 +64,28 @@ public class UserStatus implements Serializable{
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public String getStatusName() {
+        return statusName;
+    }
+
+    public void setStatusName(String statusName) { this.statusName = statusName; }
+
+    /**
+     * Converts the numerical status present in object to the text equivalent
+     * status and sets the variable statusName to this text.
+     */
+    public void updateStatusName() {
+        switch (getStatusCode()) {
+            case 1: setStatusName("SOS");
+            break;
+            case 2: setStatusName("Lost");
+            break;
+            case 3: setStatusName("Okay");
+            break;
+            default:
+                setStatusName("");
+        }
     }
 }

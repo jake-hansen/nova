@@ -9,6 +9,14 @@
     <c:redirect url="/"/>
 </c:if>
 
+<c:if test="${requestScope.forwarded_to_first_responder_updates == null}">
+    <jsp:forward page="/getallfirstresponderupdates"/>
+</c:if>
+
+<c:if test="${requestScope.dashboard_updated == null}">
+    <jsp:forward page="/getalllostandinjured"/>
+</c:if>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,7 +69,7 @@
 <!-- End Login Modal-->
 
 <!-- Send Update Status Toast -->
-<div class="toast" data-autohide="false" style="position: absolute; bottom: 0; left: 50%; transform: translate(-50%, 0px); z-index: 9999;">
+<div class="toast" data-autohide="false" style="position: fixed; bottom: 0; left: 50%; transform: translate(-50%, 0px); z-index: 9999;">
     <div class="toast-header">
         <strong class="mr-auto">Informational Update</strong>
         <small>now</small>
@@ -89,14 +97,16 @@
 <c:remove var="update_published" scope="session"/>
 <!-- Send Update Status Toast -->
 
-<!-- Faculty View -->
+<!-- First Responder View -->
 <div class="container">
     <div class="row">
         <div class="col-sm">
             <div class="card mb-3">
                 <div class="card-header bg-dark text-light"><h5>Law Enforcement/EMS Updates</h5></div>
                 <div class="card-body">
-                    <p class="card-text">Most recent updates will be shown here...</p>
+                    <p class="card-text">
+                        <c:out value="${requestScope.first_responder_updates_list}"/>
+                    </p>
                 </div>
             </div>
         </div>
@@ -125,27 +135,21 @@
                     <div style="overflow-x:auto; max-height: 400px">
                         <table id="emergencyDashboard" class="table table-bordered">
                             <thead>
-                            <tr>
-                                <th>Emergency Type</th>
-                                <th>Student/Faculty Name</th>
-                                <th>Relative Location</th>
-                            </tr>
+                                <tr>
+                                    <th>Emergency Type</th>
+                                    <th>Student/Faculty Name</th>
+                                    <th>Relative Location</th>
+                                </tr>
                             </thead>
+                            <c:forEach var="user" items="${requestScope.injured_and_lost_list}">
+                                <tr>
+                                    <td><c:out value="${user.userStatus.statusName}"/></td>
+                                    <td><c:out value="${user.firstName} ${user.lastName}"/></td>
+                                    <td><c:out value="${user.userStatus.location}"/></td>
+                                </tr>
+                            </c:forEach>
                         </table>
                     </div>
-                    <script>
-                        function myFunction() {
-                            var table = document.getElementById("emergencyDashboard");
-                            var row = table.insertRow(1);
-                            var cell0 = row.insertCell(0);
-                            var cell1 = row.insertCell(1)
-                            var cell2 = row.insertCell(2);
-                            cell0.innerHTML = "SOS";
-                            cell1.innerHTML = "Student_1";
-                            cell2.innerHTML = "Across from library";
-                        }
-                    </script>
-                    <button type="button" class="btn btn-primary" onclick="myFunction()">Refresh</button>
                 </div>
             </div>
         </div>

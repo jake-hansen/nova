@@ -26,6 +26,9 @@ public class User implements Serializable {
     @Column(name = "password")
     private String hashedPassword;
 
+    @Transient
+    private UserStatus userStatus;
+
     public User(String firstName, String lastName, String email, int groupID, int id) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -83,6 +86,14 @@ public class User implements Serializable {
     public String getHashedPassword() { return this.hashedPassword; }
 
     public void setHashedPassword(String hashedPassword) { this.hashedPassword = hashedPassword; }
+
+    public UserStatus getUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(UserStatus userStatus) {
+        this.userStatus = userStatus;
+    }
 
     @Override
     public String toString() {

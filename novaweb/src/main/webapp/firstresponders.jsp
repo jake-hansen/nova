@@ -69,7 +69,7 @@
 <!-- End Login Modal-->
 
 <!-- Send Update Status Toast -->
-<div class="toast" data-autohide="false" style="position: absolute; bottom: 0; left: 50%; transform: translate(-50%, 0px); z-index: 9999;">
+<div class="toast" data-autohide="false" style="position: fixed; bottom: 0; left: 50%; transform: translate(-50%, 0px); z-index: 9999;">
     <div class="toast-header">
         <strong class="mr-auto">Informational Update</strong>
         <small>now</small>
@@ -141,11 +141,11 @@
                                     <th>Relative Location</th>
                                 </tr>
                             </thead>
-                            <c:forEach var="table_row" items="${requestScope.injured_and_lost_list}">
+                            <c:forEach var="user" items="${requestScope.injured_and_lost_list}">
                                 <tr>
-                                    <td><c:out value="${table_row.get(0)}"/></td>
-                                    <td><c:out value="${table_row.get(1)}"/></td>
-                                    <td><c:out value="${table_row.get(2)}"/></td>
+                                    <td><c:out value="${user.userStatus.statusName}"/></td>
+                                    <td><c:out value="${user.firstName} ${user.lastName}"/></td>
+                                    <td><c:out value="${user.userStatus.location}"/></td>
                                 </tr>
                             </c:forEach>
                         </table>

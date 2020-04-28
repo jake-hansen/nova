@@ -77,7 +77,7 @@
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
-    <div class="toast-body">
+    <div class="toast-body" id="toast_text" name="toast_text">
         <c:if test="${sessionScope.update_published == true}">
             Your update was published successfully.
         </c:if>

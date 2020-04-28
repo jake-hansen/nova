@@ -97,16 +97,16 @@
                                         <p>
                                         <strong>Status: </strong> <c:choose>
                                                 <c:when test="${sessionScope.found_user_object_status.statusCode == 1}">
-                                                    <span class="text-danger">SOS</span> - <c:out value="${sessionScope.found_user_object_status.location}"/>
+                                                    <span class="text-danger" id="SOS_status">SOS</span> - <c:out value="${sessionScope.found_user_object_status.location}"/>
                                                 </c:when>
                                                 <c:when test="${sessionScope.found_user_object_status.statusCode == 2}">
-                                                    <span class="text-warning">Lost</span> - <c:out value="${sessionScope.found_user_object_status.location}"/>
+                                                    <span class="text-warning" id="lost_status">Lost</span> - <c:out value="${sessionScope.found_user_object_status.location}"/>
                                                 </c:when>
                                                 <c:when test="${sessionScope.found_user_object_status.statusCode == 3}">
-                                                    <span class="text-success">Okay</span>
+                                                    <span class="text-success" id="okay_status">Okay</span>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <span class="text-warning">Not Accounted</span>
+                                                    <span class="text-warning" id="not_accounted_for_status">Not Accounted</span>
                                                 </c:otherwise>
                                             </c:choose>
                                         </p>

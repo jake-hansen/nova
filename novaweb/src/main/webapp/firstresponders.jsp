@@ -77,7 +77,7 @@
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
-    <div class="toast-body">
+    <div class="toast-body" id="toast_text" name="toast_text">
         <c:if test="${sessionScope.update_published == true}">
             Your update was published successfully.
         </c:if>
@@ -104,7 +104,7 @@
             <div class="card mb-3">
                 <div class="card-header bg-dark text-light"><h5>Law Enforcement/EMS Updates</h5></div>
                 <div class="card-body">
-                    <p class="card-text">
+                    <p class="card-text" id="latest_updates" name="latest_updates">
                         <c:out value="${requestScope.first_responder_updates_list}"/>
                     </p>
                 </div>

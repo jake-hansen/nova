@@ -29,28 +29,47 @@ public class searchUserTest {
     @Test
     public void testUntitledTestCase() throws Exception {
         driver.get("http://localhost:8080/novaweb/");
+        Thread.sleep(1000);
         driver.findElement(By.xpath("(//button[@type='button'])[2]")).click();
+        Thread.sleep(1000);
         driver.findElement(By.id("email")).click();
+        Thread.sleep(1000);
         driver.findElement(By.id("email")).clear();
+        Thread.sleep(1000);
         driver.findElement(By.id("email")).sendKeys("testuser@testuser.com");
+        Thread.sleep(1000);
         driver.findElement(By.id("password")).click();
+        Thread.sleep(1000);
         driver.findElement(By.id("password")).clear();
+        Thread.sleep(1000);
         driver.findElement(By.id("password")).sendKeys("password");
+        Thread.sleep(1000);
         driver.findElement(By.xpath("//button[@type='submit']")).click();
         Thread.sleep(1000);
         driver.findElement(By.linkText("Account Management")).click();
-        Thread.sleep(500);
+        Thread.sleep(1000);
         driver.findElement(By.id("firstname")).click();
+        Thread.sleep(1000);
         driver.findElement(By.id("firstname")).clear();
+        Thread.sleep(1000);
         driver.findElement(By.id("firstname")).sendKeys("Test");
+        Thread.sleep(1000);
         driver.findElement(By.id("lastname")).clear();
+        Thread.sleep(1000);
         driver.findElement(By.id("lastname")).sendKeys("Search");
+        Thread.sleep(1000);
         driver.findElement(By.id("registeremail")).clear();
+        Thread.sleep(1000);
         driver.findElement(By.id("registeremail")).sendKeys("testsearch@gmail.com");
+        Thread.sleep(1000);
         driver.findElement(By.id("registerpassword")).clear();
+        Thread.sleep(1000);
         driver.findElement(By.id("registerpassword")).sendKeys("password");
+        Thread.sleep(1000);
         driver.findElement(By.id("passwordconfirmation")).clear();
+        Thread.sleep(1000);
         driver.findElement(By.id("passwordconfirmation")).sendKeys("password");
+        Thread.sleep(1000);
         driver.findElement(By.id("createAccountButton")).click();
         Thread.sleep(1000);
         assertEquals("Account Successfully Created", driver.findElement(By.xpath("//p")).getText());
@@ -60,27 +79,39 @@ public class searchUserTest {
         Thread.sleep(1000);
 
         driver.findElement(By.xpath("//button[@type='submit']")).click();
+        Thread.sleep(1000);
         driver.findElement(By.xpath("(//button[@type='button'])[2]")).click();
+        Thread.sleep(1000);
         driver.findElement(By.id("email")).click();
+        Thread.sleep(1000);
         driver.findElement(By.id("email")).clear();
+        Thread.sleep(1000);
         driver.findElement(By.id("email")).sendKeys("testsearch@gmail.com");
         Thread.sleep(1000);
         driver.findElement(By.id("password")).clear();
+        Thread.sleep(1000);
         driver.findElement(By.id("password")).sendKeys("password");
         Thread.sleep(1000);
 
         driver.findElement(By.xpath("//button[@type='submit']")).click();
+        Thread.sleep(1000);
         driver.findElement(By.linkText("Accountability")).click();
+        Thread.sleep(1000);
 
         driver.findElement(By.id("first_name_search")).click();
+        Thread.sleep(1000);
         driver.findElement(By.id("first_name_search")).clear();
+        Thread.sleep(1000);
         driver.findElement(By.id("first_name_search")).sendKeys("Test");
+        Thread.sleep(1000);
         driver.findElement(By.id("last_name_search")).click();
+        Thread.sleep(1000);
         driver.findElement(By.id("last_name_search")).clear();
+        Thread.sleep(1000);
         driver.findElement(By.id("last_name_search")).sendKeys("Search");
         Thread.sleep(1000);
         driver.findElement(By.xpath("(//button[@type='submit'])[3]")).click();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         assertEquals("Name: Test Search", driver.findElement(By.xpath("//p")).getText());
 
 
@@ -89,23 +120,34 @@ public class searchUserTest {
         Thread.sleep(1000);
 
         driver.findElement(By.xpath("//button[@type='submit']")).click();
+        Thread.sleep(1000);
         driver.findElement(By.xpath("(//button[@type='button'])[2]")).click();
+        Thread.sleep(1000);
         driver.findElement(By.id("email")).click();
+        Thread.sleep(1000);
         driver.findElement(By.id("email")).clear();
+        Thread.sleep(1000);
         driver.findElement(By.id("email")).sendKeys("testuser@testuser.com");
         Thread.sleep(1000);
         driver.findElement(By.id("password")).click();
+        Thread.sleep(1000);
         driver.findElement(By.id("password")).clear();
+        Thread.sleep(1000);
         driver.findElement(By.id("password")).sendKeys("password");
         Thread.sleep(1000);
         driver.findElement(By.xpath("//button[@type='submit']")).click();
+        Thread.sleep(1000);
         driver.findElement(By.linkText("Account Management")).click();
+        Thread.sleep(1000);
 
         driver.findElement(By.id("deleteByEmail")).click();
-        driver.findElement(By.id("deleteByEmail")).clear();
-        driver.findElement(By.id("deleteByEmail")).sendKeys("testsearch@gmail.com");
-        driver.findElement(By.xpath("(//button[@type='submit'])[4]")).click();
         Thread.sleep(1000);
+        driver.findElement(By.id("deleteByEmail")).clear();
+        Thread.sleep(1000);
+        driver.findElement(By.id("deleteByEmail")).sendKeys("testsearch@gmail.com");
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("(//button[@type='submit'])[4]")).click();
+        Thread.sleep(2000);
         assertEquals("Account Successfully Deleted", driver.findElement(By.xpath("//p")).getText());
     }
 
